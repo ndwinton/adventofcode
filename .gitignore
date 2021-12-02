@@ -6,3 +6,7 @@ build
 
 # Don't include input files
 inputs
+
+# No idea ;)
+.idea
+
