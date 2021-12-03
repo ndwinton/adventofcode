@@ -10,6 +10,7 @@ fun main(args: Array<String>) {
     when (args[0]) {
         "1" -> runDay01()
         "2" -> runDay02()
+        "3" -> runDay03()
         else -> println("""
             https://adventofcode.com/2021/
             
@@ -29,6 +30,10 @@ fun runDay01() {
 fun runDay02() {
     println("Part 1: " + Day02.moveProduct(inputLines(2)))
     println("Part 2: " + Day02.moveWithAimProduct(inputLines(2)))
+}
+
+fun runDay03() {
+    println("Part 1: " + Day03.gammaEpsilonProduct(inputLines(3)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
