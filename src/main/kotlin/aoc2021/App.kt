@@ -34,6 +34,7 @@ fun runDay02() {
 
 fun runDay03() {
     println("Part 1: " + Day03.gammaEpsilonProduct(inputLines(3)))
+    println("Part 2: " + Day03.gasesProduct(inputLines(3)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
