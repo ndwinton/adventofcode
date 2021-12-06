@@ -27,11 +27,7 @@ class Day05Spec : FunSpec({
 
     test("generating points on vertical line") {
         Line(Point(2, 5), Point(2, 3)).points.shouldBe(listOf(
-            Point(2, 3), Point(2,4), Point(2, 5)))
-    }
-
-    test("generating neither horizontal nor vertical") {
-        Line(Point(2, 3), Point(5, 7)).points.shouldBeEmpty()
+            Point(2, 5), Point(2,4), Point(2, 3)))
     }
 
     test("count of intersections") {
@@ -42,5 +38,21 @@ class Day05Spec : FunSpec({
             "4,4 -> 4,4",
             "0,10 -> 2,10",
             "0,10 -> 5,10")).shouldBe(5)
+    }
+
+    test("generating diagonal -- LL-UR") {
+        Line(Point(1, 2), Point(3, 4)).points.shouldBe(listOf(
+            Point(1, 2),
+            Point(2, 3),
+            Point(3, 4)
+        ))
+    }
+
+    test("generating diagonal -- UL-LR") {
+        Line(Point(1, 4), Point(3, 2)).points.shouldBe(listOf(
+            Point(1, 4),
+            Point(2, 3),
+            Point(3, 2)
+        ))
     }
 })

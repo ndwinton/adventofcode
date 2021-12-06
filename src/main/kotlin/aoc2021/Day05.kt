@@ -1,6 +1,6 @@
 package aoc2021
 
-import java.lang.Integer.min
+import kotlin.math.abs
 import kotlin.math.max
 
 object Day05 {
@@ -12,26 +12,35 @@ object Day05 {
     private fun parsePoint(s: String): Point =
         s.split(",").let { Point(it[0].toInt(), it[1].toInt()) }
 
-    fun countIntersections(input: List<String>): Int =
+    fun countIntersections(input: List<String>, includeDiagonals: Boolean = false): Int =
         input.map { parseLine(it) }
-        .flatMap { it.points }
-        .groupingBy { it }
-        .eachCount()
-        .filter { it.value > 1 }
-        .count()
+            .filter { includeDiagonals || it.isHorizontal() || it.isVertical() }
+            .flatMap { it.points }
+            .groupingBy { it }
+            .eachCount()
+            .filter { it.value > 1 }
+            .count()
 }
 
 data class Point(val x: Int, val y: Int)
 
 data class Line(val a: Point, val b: Point) {
     val points: List<Point> get() =
-        when {
-            isHorizontal() -> (min(a.x, b.x)..max(a.x, b.x)).map { Point(it, a.y) }
-            isVertical() -> (min(a.y, b.y)..max(a.y, b.y)).map { Point(a.x, it) }
-            else -> emptyList()
-        }
+        (0 .. steps()).map { Point(a.x + deltaX() * it, a.y + deltaY() * it)}
 
     fun isHorizontal() = a.y == b.y
 
     fun isVertical() = a.x == b.x
+
+    private fun steps() = max(abs(a.x - b.x), abs(a.y - b.y))
+
+    private fun deltaX() = sign(b.x - a.x)
+
+    private fun deltaY() = sign(b.y - a.y)
+
+    private fun sign(x: Int): Int = when {
+        x == 0 -> 0
+        x < 0 -> -1
+        else -> 1
+    }
 }

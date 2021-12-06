@@ -46,7 +46,7 @@ fun runDay04() {
 
 fun runDay05() {
     println("Part 1: " + Day05.countIntersections(inputLines(5)))
-    //println("Part 2: " + Day04.findLastWinningScore(inputLines(4)))
+    println("Part 2: " + Day05.countIntersections(inputLines(5), includeDiagonals = true))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
