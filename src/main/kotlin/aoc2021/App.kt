@@ -12,6 +12,7 @@ fun main(args: Array<String>) {
         "2" -> runDay02()
         "3" -> runDay03()
         "4" -> runDay04()
+        "5" -> runDay05()
         else -> println("""
             https://adventofcode.com/2021/
             
@@ -41,6 +42,11 @@ fun runDay03() {
 fun runDay04() {
     println("Part 1: " + Day04.findWinningScore(inputLines(4)))
     println("Part 2: " + Day04.findLastWinningScore(inputLines(4)))
+}
+
+fun runDay05() {
+    println("Part 1: " + Day05.countIntersections(inputLines(5)))
+    //println("Part 2: " + Day04.findLastWinningScore(inputLines(4)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
