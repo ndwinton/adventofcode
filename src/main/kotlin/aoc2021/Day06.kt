@@ -39,3 +39,23 @@ class Shoal(vararg val states: Int) {
 tailrec fun simulateShoal(remaining: Int, shoal: Shoal): Int =
     if (remaining == 0) shoal.states.count()
     else simulateShoal(remaining - 1, shoal.evolve())
+
+data class CountedShoal(val stateCounts: Map<Int,Long>) {
+    fun evolve(): CountedShoal {
+        return CountedShoal(mapOf(
+            0 to (stateCounts[1] ?: 0),
+            1 to (stateCounts[2] ?: 0),
+            2 to (stateCounts[3] ?: 0),
+            3 to (stateCounts[4] ?: 0),
+            4 to (stateCounts[5] ?: 0),
+            5 to (stateCounts[6] ?: 0),
+            6 to (stateCounts[7] ?: 0) + (stateCounts[0] ?: 0),
+            7 to (stateCounts[8] ?: 0),
+            8 to (stateCounts[0] ?: 0),
+        ))
+    }
+}
+
+fun simulateCountedShoal(remaining: Int, shoal: CountedShoal): Long =
+    if (remaining == 0) shoal.stateCounts.values.sum()
+    else simulateCountedShoal(remaining - 1, shoal.evolve())

@@ -52,7 +52,8 @@ fun runDay05() {
 
 fun runDay06() {
     println("Part 1: " + simulateShoal(80, Shoal(*(inputLineAsIntList(inputLines(6).first()).toIntArray()))))
-    println("Part 2: " + Day05.countIntersections(inputLines(5), includeDiagonals = true))
+    println("Part 2: " + simulateCountedShoal(256, CountedShoal(inputLineAsIntList(
+        inputLines(6).first()).groupingBy { it }.eachCount().map { Pair(it.key, it.value.toLong()) }.toMap())))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))

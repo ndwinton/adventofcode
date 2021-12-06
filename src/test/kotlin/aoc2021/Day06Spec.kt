@@ -20,4 +20,27 @@ class Day06Spec : FunSpec({
         Shoal(3, 4, 3, 1, 2).evolve().shouldBe(Shoal(2, 3, 2, 0, 1))
         Shoal(0, 1, 0, 5, 6, 7, 8).evolve().shouldBe(Shoal(6, 0, 6, 4, 5, 6, 7, 8, 8))
     }
+
+    test("evolving a counted shoal") {
+        CountedShoal(mapOf(
+            0 to 2L,
+            1 to 1L,
+            2 to 0L,
+            3 to 0L,
+            4 to 0L,
+            5 to 1L,
+            6 to 1L,
+            7 to 1L,
+            8 to 1L)).evolve()
+            .shouldBe(CountedShoal(mapOf(
+                0 to 1L,
+                1 to 0L,
+                2 to 0L,
+                3 to 0L,
+                4 to 1L,
+                5 to 1L,
+                6 to 3L,
+                7 to 1L,
+                8 to 2L)))
+    }
 })
