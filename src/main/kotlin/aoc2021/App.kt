@@ -13,6 +13,7 @@ fun main(args: Array<String>) {
         "3" -> runDay03()
         "4" -> runDay04()
         "5" -> runDay05()
+        "6" -> runDay06()
         else -> println("""
             https://adventofcode.com/2021/
             
@@ -49,12 +50,19 @@ fun runDay05() {
     println("Part 2: " + Day05.countIntersections(inputLines(5), includeDiagonals = true))
 }
 
+fun runDay06() {
+    println("Part 1: " + simulateShoal(80, Shoal(*(inputLineAsIntList(inputLines(6).first()).toIntArray()))))
+    println("Part 2: " + Day05.countIntersections(inputLines(5), includeDiagonals = true))
+}
+
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
     .let { if (it.exists()) it.bufferedReader() else System.`in`.bufferedReader() }
 
 fun inputLines(dayNum: Int): List<String> = inputForDay(dayNum).readLines()
 
 fun inputAsIntList(dayNum: Int) = inputLines(dayNum).map { it.toInt() }
+
+fun inputLineAsIntList(line: String) = line.split(",").map { it.toInt() }
 
 fun inputAsLongList(dayNum: Int) = inputLines(dayNum).map { it.toLong() }
 
