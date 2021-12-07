@@ -30,9 +30,9 @@ object Day04 {
         }
 }
 
-class Board(private val lines: List<String>) {
-    private val cells = lines.map {
-        it.trim().split(Regex("""\s+""")).map {
+class Board(lines: List<String>) {
+    private val cells = lines.map { line ->
+        line.trim().split(Regex("""\s+""")).map {
             Cell(it.toInt())
         }.toTypedArray()
     }.toTypedArray()
@@ -60,7 +60,7 @@ class Board(private val lines: List<String>) {
         (0..4).map { col -> cells.map { it[col]} }.any { col -> col.all { it.called } }
 
     fun score(): Int =
-        if (hasWon()) cells.map { row -> row.sumOf { if (!it.called) it.value else 0 } }.sum() * lastCall
+        if (hasWon()) cells.sumOf { row -> row.sumOf { if (!it.called) it.value else 0 } } * lastCall
         else 0
 }
 

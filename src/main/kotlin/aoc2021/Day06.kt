@@ -56,6 +56,6 @@ data class CountedShoal(val stateCounts: Map<Int,Long>) {
     }
 }
 
-fun simulateCountedShoal(remaining: Int, shoal: CountedShoal): Long =
+tailrec fun simulateCountedShoal(remaining: Int, shoal: CountedShoal): Long =
     if (remaining == 0) shoal.stateCounts.values.sum()
     else simulateCountedShoal(remaining - 1, shoal.evolve())

@@ -29,7 +29,7 @@ object Day03 {
     fun co2Scrubber(inputs: List<String>) =
         findSingleMatchingPrefix(0, inputs, this::epsilonDigits)
 
-    fun findSingleMatchingPrefix(offset: Int, inputs: List<String>, function: (inputs: List<String>) -> String): String {
+    private fun findSingleMatchingPrefix(offset: Int, inputs: List<String>, function: (inputs: List<String>) -> String): String {
         val prefix = function(inputs).substring(0, offset + 1)
         return inputs.partition { it[offset] == prefix[offset] }.first.let {
             if (it.size == 1) it.first()
