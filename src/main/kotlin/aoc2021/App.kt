@@ -14,6 +14,7 @@ fun main(args: Array<String>) {
         "4" -> runDay04()
         "5" -> runDay05()
         "6" -> runDay06()
+        "7" -> runDay07()
         else -> println("""
             https://adventofcode.com/2021/
             
@@ -54,6 +55,11 @@ fun runDay06() {
     println("Part 1: " + simulateShoal(80, Shoal(*(inputLineAsIntList(inputLines(6).first()).toIntArray()))))
     println("Part 2: " + simulateCountedShoal(256, CountedShoal(inputLineAsIntList(
         inputLines(6).first()).groupingBy { it }.eachCount().map { Pair(it.key, it.value.toLong()) }.toMap())))
+}
+
+fun runDay07() {
+    println("Part 1: " + minimumAlignmentCost(inputLineAsIntList(inputLines(7).first()), ::alignmentCost))
+    println("Part 2: " + minimumAlignmentCost(inputLineAsIntList(inputLines(7).first()), ::alignmentCost2))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
