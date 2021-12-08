@@ -15,6 +15,7 @@ fun main(args: Array<String>) {
         "5" -> runDay05()
         "6" -> runDay06()
         "7" -> runDay07()
+        "8" -> runDay08()
         else -> println("""
             https://adventofcode.com/2021/
             
@@ -60,6 +61,10 @@ fun runDay06() {
 fun runDay07() {
     println("Part 1: " + minimumAlignmentCost(inputLineAsIntList(inputLines(7).first()), ::alignmentCost))
     println("Part 2: " + minimumAlignmentCost(inputLineAsIntList(inputLines(7).first()), ::alignmentCost2))
+}
+
+fun runDay08() {
+    println("Part 1: " + countSimpleOutputs(inputLines(8)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
