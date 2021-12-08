@@ -26,4 +26,29 @@ gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce
     test("count simple numbers in output") {
         countSimpleOutputs(data).shouldBe(26)
     }
+    
+    test("decode segments") {
+        decodeSegments(listOf("gcafb", "gcf", "dcaebfg", "ecagb", "gf", "abcdeg", "gaef", "cafbge", "fdbac", "fegbdc")).shouldBe(mapOf(
+            "a" to "D",
+            "b" to "G",
+            "c" to "A",
+            "d" to "E",
+            "e" to "B",
+            "f" to "C",
+            "g" to "F",
+        ))
+    }
+
+    test("decode digits") {
+        val segmentMap = mapOf(
+            "a" to "D",
+            "b" to "G",
+            "c" to "A",
+            "d" to "E",
+            "e" to "B",
+            "f" to "C",
+            "g" to "F",
+        )
+        decodeDigits(segmentMap, listOf("fgae", "cfgab", "fg", "bagce")).shouldBe(4315)
+    }
 })

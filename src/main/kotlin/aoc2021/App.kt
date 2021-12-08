@@ -65,6 +65,7 @@ fun runDay07() {
 
 fun runDay08() {
     println("Part 1: " + countSimpleOutputs(inputLines(8)))
+    println("Part 2: " + sumOfAllDecoded(inputLines(8)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
