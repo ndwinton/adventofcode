@@ -5,6 +5,8 @@ import io.kotest.data.forAll
 import io.kotest.data.headers
 import io.kotest.data.row
 import io.kotest.data.table
+import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
+import io.kotest.matchers.collections.shouldContainInOrder
 import io.kotest.matchers.shouldBe
 
 class Day09Spec : FunSpec({
@@ -38,5 +40,17 @@ class Day09Spec : FunSpec({
                 9899965678
             """.trimIndent().lines()
         ).sumRiskLevels().shouldBe(15)
+    }
+
+    test("sample basin sizes") {
+        HeightMap(
+            """
+                2199943210
+                3987894921
+                9856789892
+                8767896789
+                9899965678
+            """.trimIndent().lines()
+        ).basinSizes().shouldContainExactlyInAnyOrder(3, 9, 14, 9)
     }
 })

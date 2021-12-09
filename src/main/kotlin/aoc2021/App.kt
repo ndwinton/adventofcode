@@ -71,6 +71,7 @@ fun runDay08() {
 
 fun runDay09() {
     println("Part 1: " + HeightMap(inputLines(9)).sumRiskLevels())
+    println("Part 2: " + HeightMap(inputLines(9)).basinSizeProduct())
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
