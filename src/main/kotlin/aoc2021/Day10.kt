@@ -14,20 +14,51 @@ private fun isValid(ch: Char, stack: Stack<Char>): Boolean =
         true
     } else checkMatch(ch, stack)
 
+private val matchForClosing = mapOf(')' to '(', ']' to '[', '}' to '{', '>' to '<')
 private fun checkMatch(ch: Char, stack: Stack<Char>): Boolean {
-    val matchFor = mapOf(')' to '(', ']' to '[', '}' to '{', '>' to '<')
     return when {
         stack.empty() -> false
-        stack.pop() == matchFor[ch] -> true
+        stack.pop() == matchForClosing[ch] -> true
         else -> false
     }
 }
 
-private fun isOpening(ch: Char): Boolean = ch in listOf('(', '[', '<', '{')
+private fun isOpening(ch: Char): Boolean =
+    when (ch) {
+        '(' -> true
+        '[' -> true
+        '<' -> true
+        '{' -> true
+        else -> false
+    }
 
 fun corruptionScore(lines: List<String>): Int =
     lines.map { findCorruption(it) }
         .groupingBy { it }
         .eachCount()
         .let { (it[")"] ?: 0) * 3 + (it["]"] ?: 0) * 57 + (it["}"] ?: 0) * 1197 + (it[">"] ?: 0) * 25137 }
+
+fun completionString(line: String): String {
+    val stack = Stack<Char>()
+    line.dropWhile { isValid(it, stack) }
+    return stack.toList().reversed().joinToString("") {
+        when (it) {
+            '(' -> ")"
+            '[' -> "]"
+            '{' -> "}"
+            '<' -> ">"
+            else -> ""
+        }
+    }
+}
+
+fun completionStringScore(str: String): Long =
+    str.fold(0L) { score, ch -> score * 5 + "?)]}>".indexOf(ch) }
+
+fun middleCompletionScore(lines: List<String>): Long =
+    lines.filter { findCorruption(it) == "" }
+        .map { completionStringScore(completionString(it)) }
+        .sorted()
+        .let { it[it.size / 2] }
+
 

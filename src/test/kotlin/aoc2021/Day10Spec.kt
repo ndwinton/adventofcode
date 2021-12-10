@@ -46,4 +46,36 @@ class Day10Spec : FunSpec({
             <{([{{}}[<[[[<>{}]]]>[]]
         """.trimIndent().lines()).shouldBe(26397)
     }
+
+    test("completion strings") {
+        table(
+            headers("input", "expected"),
+            row("", ""),
+            row("()", ""),
+            row("(", ")"),
+            row("([", "])"),
+            row("([]", ")"),
+            row("[({(<(())[]>[[{[]{<()<>>", "}}]])})]")
+        ).forAll { input, expected -> completionString(input).shouldBe(expected)}
+    }
+
+    test("completion string score") {
+        completionStringScore("])}>").shouldBe(294L)
+        completionStringScore("}}]])})]").shouldBe(288957L)
+    }
+
+    test("middle completions string score") {
+        middleCompletionScore("""
+            [({(<(())[]>[[{[]{<()<>>
+            [(()[<>])]({[<{<<[]>>(
+            {([(<{}[<>[]}>{[]{[(<()>
+            (((({<>}<{<{<>}{[]{[]{}
+            [[<[([]))<([[{}[[()]]]
+            [{[{({}]{}}([{[{{{}}([]
+            {<[[]]>}<{[{[{[]{()[[[]
+            [<(<(<(<{}))><([]([]()
+            <{([([[(<>()){}]>(<<{{
+            <{([{{}}[<[[[<>{}]]]>[]]
+        """.trimIndent().lines()).shouldBe(288957L)
+    }
 })

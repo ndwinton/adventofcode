@@ -77,6 +77,7 @@ fun runDay09() {
 
 fun runDay10() {
     println("Part 1: " + corruptionScore(inputLines(10)))
+    println("Part 2: " + middleCompletionScore(inputLines(10)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
