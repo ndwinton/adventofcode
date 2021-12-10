@@ -17,6 +17,7 @@ fun main(args: Array<String>) {
         "7" -> runDay07()
         "8" -> runDay08()
         "9" -> runDay09()
+        "10" -> runDay10()
         else -> println("""
             https://adventofcode.com/2021/
             
@@ -72,6 +73,10 @@ fun runDay08() {
 fun runDay09() {
     println("Part 1: " + HeightMap(inputLines(9)).sumRiskLevels())
     println("Part 2: " + HeightMap(inputLines(9)).basinSizeProduct())
+}
+
+fun runDay10() {
+    println("Part 1: " + corruptionScore(inputLines(10)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
