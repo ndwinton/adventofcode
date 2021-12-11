@@ -18,6 +18,7 @@ fun main(args: Array<String>) {
         "8" -> runDay08()
         "9" -> runDay09()
         "10" -> runDay10()
+        "11" -> runDay11()
         else -> println("""
             https://adventofcode.com/2021/
             
@@ -78,6 +79,10 @@ fun runDay09() {
 fun runDay10() {
     println("Part 1: " + corruptionScore(inputLines(10)))
     println("Part 2: " + middleCompletionScore(inputLines(10)))
+}
+
+fun runDay11() {
+    println("Part 1: " + simulateOctopuses(linesToCells(inputLines(11)), 100))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
