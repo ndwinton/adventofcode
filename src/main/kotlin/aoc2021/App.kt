@@ -83,6 +83,7 @@ fun runDay10() {
 
 fun runDay11() {
     println("Part 1: " + simulateOctopuses(linesToCells(inputLines(11)), 100))
+    println("Part 2: " + syncOctopuses(linesToCells(inputLines(11))))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))

@@ -7,13 +7,13 @@ tailrec fun flash(cells: List<List<Int>>, count: Int): List<List<Int>> {
     fun safeGet(row: Int, col: Int): Int =
         if (row >= 0 && row < cells.size && col >= 0 && col < cells[0].size) cells[row][col] else 0
 
-    fun flash(row: Int, col: Int): Int =
+    fun flashValue(row: Int, col: Int): Int =
         if (safeGet(row, col) > 9) 1 else 0
 
     fun flashyNeighbours(row: Int, col: Int): Int =
-        flash(row - 1, col - 1) + flash(row - 1, col) + flash (row - 1, col + 1) +
-        flash(row, col - 1) + flash(row, col + 1) +
-        flash(row + 1, col - 1) + flash(row + 1, col) + flash(row + 1, col + 1)
+        flashValue(row - 1, col - 1) + flashValue(row - 1, col) + flashValue (row - 1, col + 1) +
+        flashValue(row, col - 1) + flashValue(row, col + 1) +
+        flashValue(row + 1, col - 1) + flashValue(row + 1, col) + flashValue(row + 1, col + 1)
 
     val result = cells.mapIndexed { row, columns ->
         columns.mapIndexed { col, energy -> if (energy > 9 || energy == 0) 0 else energy + flashyNeighbours(row, col) }
@@ -35,3 +35,8 @@ tailrec fun simulateOctopuses(cells: List<List<Int>>, steps: Int, count: Int = 0
         simulateOctopuses(newCells, steps - 1, count + newFlashers)
     }
 
+tailrec fun syncOctopuses(cells: List<List<Int>>, generation: Int = 1): Int {
+    val nextCells = octopusStep(cells)
+    return if (flashCount(nextCells) == cells.size * cells[0].size) generation
+    else syncOctopuses(nextCells, generation + 1)
+}

@@ -36,4 +36,20 @@ class Day11Spec : FunSpec({
         simulateOctopuses(cells, 100, 0).shouldBe(1656)
 
     }
+
+    test("given example for sync") {
+        val cells = linesToCells("""
+            5483143223
+            2745854711
+            5264556173
+            6141336146
+            6357385478
+            4167524645
+            2176841721
+            6882881134
+            4846848554
+            5283751526
+        """.trimIndent().lines())
+        syncOctopuses(cells).shouldBe(195)
+    }
 })
