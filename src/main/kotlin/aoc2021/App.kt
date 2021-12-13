@@ -95,6 +95,7 @@ fun runDay12() {
 
 fun runDay13() {
     println("Part 1: " + countDots(runFirstFold(inputLines(13))))
+    println("Part 2: \n" + printableSheet(runFolds(inputLines(13))))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))

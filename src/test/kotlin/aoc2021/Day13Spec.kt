@@ -76,6 +76,13 @@ class Day13Spec : FunSpec({
             listOf(2, 2),
         ))
     }
+
+    test("build sheet with boundaries from fold instructions") {
+        buildSheet(listOf("1,1", "fold along y=3", "fold along x=4")).let {
+            it.size.shouldBe(7)
+            it[0].size.shouldBe(9)
+        }
+    }
 })
 
 
