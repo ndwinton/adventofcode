@@ -39,4 +39,4 @@ fun runFolds(lines: List<String>): Sheet =
         .fold(buildSheet(lines)) { sheet, line -> if (line.startsWith("fold along y")) foldHorizontally(sheet) else foldVertically(sheet)}
 
 fun printableSheet(sheet: Sheet): String =
-    sheet.joinToString("\n") { row -> row.joinToString("") { (if (it > 0) "#" else ".") } }
+    sheet.joinToString("\n") { row -> row.joinToString("") { (if (it > 0) "[]" else "  ") } }
