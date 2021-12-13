@@ -16,6 +16,19 @@ class Day12Spec : FunSpec({
     """.trimIndent().lines()
 
     val example2 = """
+        dc-end
+        HN-start
+        start-kj
+        dc-start
+        dc-HN
+        LN-dc
+        HN-end
+        kj-sa
+        kj-HN
+        kj-dc
+    """.trimIndent().lines()
+
+    val example3 = """
         fs-end
         he-DX
         fs-he
@@ -69,6 +82,13 @@ class Day12Spec : FunSpec({
     }
 
     test("larger example") {
-        findPaths(example2).count().shouldBe(226)
+        findPaths(example3).count().shouldBe(226)
+    }
+
+    test("example with part 2 rule") {
+        findPaths(example1, ::part2Rule).count().shouldBe(36)
+        findPaths(example2, ::part2Rule).count().shouldBe(103)
+        findPaths(example3, ::part2Rule).count().shouldBe(3509)
+
     }
 })

@@ -89,6 +89,7 @@ fun runDay11() {
 
 fun runDay12() {
     println("Part 1: " + findPaths(inputLines(12)).count())
+    println("Part 2: " + findPaths(inputLines(12), ::part2Rule).count())
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
