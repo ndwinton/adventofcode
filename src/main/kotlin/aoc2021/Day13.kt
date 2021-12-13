@@ -2,6 +2,11 @@ package aoc2021
 
 typealias Sheet = List<List<Int>>
 
+// I know that this whole implementation is horrendously inefficient.
+// I've been more interested in implementing this using FP constructs
+// rather than looking for speed. If it was speed I was after then
+// I'd be iterating procedurally over a large 2-dimensional char array ;-)
+
 fun buildSheet(lines: List<String>): Sheet {
     val dimensions = lines.filter { it.startsWith("fold") }
         .map { line -> line.split("=")
