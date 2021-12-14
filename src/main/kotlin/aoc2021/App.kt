@@ -21,6 +21,7 @@ fun main(args: Array<String>) {
         "11" -> runDay11()
         "12" -> runDay12()
         "13" -> runDay13()
+        "14" -> runDay14()
         else -> println("""
             https://adventofcode.com/2021/
             
@@ -96,6 +97,11 @@ fun runDay12() {
 fun runDay13() {
     println("Part 1: " + countDots(runFirstFold(inputLines(13))))
     println("Part 2: \n" + printableSheet(runFolds(inputLines(13))))
+}
+
+fun runDay14() {
+    println("Part 1: " + polymerPart1(inputLines(14)))
+    println("Part 2: " + polymerPart2(inputLines(14), 40))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
