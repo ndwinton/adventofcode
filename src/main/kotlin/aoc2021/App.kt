@@ -107,6 +107,7 @@ fun runDay14() {
 
 fun runDay15() {
     println("Part 1: " + day15part1(inputLines(15)))
+    println("Part 2: " + day15part1(makeExpandedMap(inputLines(15))))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))

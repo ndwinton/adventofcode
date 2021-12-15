@@ -112,7 +112,21 @@ fun manhattan(start: Node, end: Node): Int {
 
 fun day15part1(lines: List<String>): Int {
     GridNode.loadGrid(lines)
-    val path = aStar(GridNode.getNode(0, 0), GridNode.getNode(99, 99), ::manhattan)
+    val path = aStar(GridNode.getNode(0, 0), GridNode.getNode(lines.size - 1, lines[0].length - 1), ::manhattan)
     println(path)
     return path.map { it.weight(it) }.drop(1).sum()
 }
+
+fun makeExpandedMap(lines: List<String>): List<String> =
+    lines.map { expandColumns(it, 4, it) }.let { expandRows(it, 4, it) }
+
+fun incrementDigits(line: String) =
+    line.map { ch -> (ch.digitToInt() + 1).let { if (it > 9) 1 else it } }.joinToString("")
+
+fun expandColumns(line: String, repeat: Int, result: String): String =
+    if (repeat == 0) result
+    else expandColumns(incrementDigits(line), repeat - 1, result + incrementDigits(line))
+
+fun expandRows(lines: List<String>, repeat: Int, result: List<String>): List<String> =
+    if (repeat == 0) result
+    else expandRows(lines.map { incrementDigits(it) }, repeat - 1, result + lines.map { incrementDigits(it) })
