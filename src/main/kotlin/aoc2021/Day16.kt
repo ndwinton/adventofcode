@@ -4,10 +4,13 @@ fun hexToBits(hex: String): String =
     hex.map { "000${it.digitToInt(16).toString(2)}".takeLast(4) }.joinToString("")
 
 sealed class Packet(open val version: Byte, open val type: Byte)
-
 data class Literal(override val version: Byte, override val type: Byte, val value: Long) : Packet(version, type)
-
 data class Operator(override val version: Byte, override val type: Byte, val packets: List<Packet>) : Packet(version, type)
+
+
+sealed class ParseResult(open val remaining: String)
+data class LiteralResult(val value: Long, override val remaining: String) : ParseResult(remaining)
+data class OpResult(val value: List<Packet>, override val remaining: String) : ParseResult(remaining)
 
 tailrec fun parseBits(bits: String, count: Int = Int.MAX_VALUE, results: List<Packet> = emptyList()): OpResult {
     if (bits.isEmpty() || bits.all { it == '0' }) return OpResult(results, "")
@@ -90,7 +93,3 @@ fun printPackets(packets: List<Packet>, indent: String = "") {
         }
     }
 }
-
-sealed class ParseResult(open val remaining: String)
-data class LiteralResult(val value: Long, override val remaining: String) : ParseResult(remaining)
-data class OpResult(val value: List<Packet>, override val remaining: String) : ParseResult(remaining)
