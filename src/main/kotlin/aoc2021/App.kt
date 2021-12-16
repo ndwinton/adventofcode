@@ -23,6 +23,7 @@ fun main(args: Array<String>) {
         "13" -> runDay13()
         "14" -> runDay14()
         "15" -> runDay15()
+        "16" -> runDay16()
         else -> println("""
             https://adventofcode.com/2021/
             
@@ -108,6 +109,10 @@ fun runDay14() {
 fun runDay15() {
     println("Part 1: " + day15part1(inputLines(15)))
     println("Part 2: " + day15part1(makeExpandedMap(inputLines(15))))
+}
+
+fun runDay16() {
+    println("Part 1: " + sumVersions(parseBits(hexToBits(inputLines(16)[0])).value))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
