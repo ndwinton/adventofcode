@@ -113,6 +113,8 @@ fun runDay15() {
 
 fun runDay16() {
     println("Part 1: " + sumVersions(parseBits(hexToBits(inputLines(16)[0])).value))
+    println("Part 2: " + evaluatePackets(parseBits(hexToBits(inputLines(16)[0])).value))
+    printPackets(parseBits(hexToBits(inputLines(16)[0])).value)
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
