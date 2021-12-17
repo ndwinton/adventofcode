@@ -6,7 +6,6 @@ import kotlin.math.max
 data class PositionTime(val position: Int, val time: Int)
 
 fun xPositions(velocity: Int) = generateSequence(PositionTime(velocity, 1)) {
-    // Pair first is x position, second is time
     when {
         velocity > 0 && it.time < velocity -> PositionTime(it.position + (velocity - it.time), it.time + 1)
         velocity < 0 && it.time < -velocity -> PositionTime(it.position + (velocity + it.time), it.time + 1)
