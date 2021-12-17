@@ -1,6 +1,7 @@
 package aoc2021
 
 import kotlin.math.abs
+import kotlin.math.max
 
 fun xPositions(velocity: Int) = generateSequence(Pair(velocity, 1)) {
     // Pair first is x position, second is time
@@ -26,7 +27,7 @@ fun xInRange(low: Int, high: Int): List<Pair<Int,Int>> =
 
 // Pairs are (velocity, time)
 fun yInRange(low: Int, high: Int): List<Pair<Int,Int>> =
-    (low .. abs(low))
+    (low .. max(abs(low), abs(high)))
         .flatMap { velocity ->
             yPositions(velocity)
                 .dropWhile { it.first > high }
@@ -49,8 +50,7 @@ fun totalDistinctVelocities(xLow: Int, xHigh: Int, yLow: Int, yHigh: Int): Int {
 
     return yByTime.filter { xByTime.containsKey(it.key) }
         .flatMap { (time, yList) ->
-            yList.map { it.first }
-                .cartesianProduct((xByTime[time] ?: emptyList()).map { it.first })
+            yList.map { it.first }.cartesianProduct((xByTime[time] ?: emptyList()).map { it.first })
         }
         .distinct().size
 }
