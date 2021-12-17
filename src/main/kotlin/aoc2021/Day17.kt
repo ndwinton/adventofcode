@@ -15,32 +15,33 @@ fun xPositions(velocity: Int) = generateSequence(PositionTime(velocity, 1)) {
 
 fun yPositions(velocity: Int) = generateSequence(PositionTime(velocity, 1)) { PositionTime(it.position + velocity - it.time, it.time + 1) }
 
-// Calculate minimum that can ever reach lower bound
-fun minForX(low: Int, high: Int) = (1 .. high).dropWhile { (it * it + it) / 2 < low }.first()
+// Calculate minimum X velocity that can ever reach lower bound
+fun minPossibleVx(low: Int, high: Int) = (1 .. high).dropWhile { (it * it + it) / 2 < low }.first()
 
 data class VelocityTime(val velocity: Int, val time: Int)
 
-fun xInRange(low: Int, high: Int): List<VelocityTime> =
-    (minForX(low, high) .. high)
+fun vxInRange(low: Int, high: Int, maxTicks: Int = 200): List<VelocityTime> =
+    (minPossibleVx(low, high) .. high)
         .flatMap { velocity ->
             xPositions(velocity)
-                .takeWhile { it.position <= high && it.time <= 200 } // TODO: Work out better bounds
+                .takeWhile { it.position <= high && it.time <= maxTicks }
                 .dropWhile { it.position < low }
                 .map { VelocityTime(velocity, it.time) } }
 
-// Max for Y - under gravity, if travelling faster than the maximum depth of
-// the target per tick at y = 0, it will always overshoot
-fun maxForY(low: Int, high: Int) = max(abs(low), abs(high))
+// Max for VY - under gravity, if travelling faster than the maximum depth of
+// the target per tick at y = 0, it will always overshoot, so this
+// is the maximum possible Y velocity
+fun maxPossibleVy(low: Int, high: Int) = max(abs(low), abs(high))
 
-fun yInRange(low: Int, high: Int): List<VelocityTime> =
-    (low .. maxForY(low, high))
+fun vyInRange(low: Int, high: Int, maxTicks: Int = 200): List<VelocityTime> =
+    (low .. maxPossibleVy(low, high))
         .flatMap { velocity ->
             yPositions(velocity)
                 .dropWhile { it.position > high }
-                .takeWhile { it.position >= low && it.time <= 200 } // TODO: Work out better bounds
+                .takeWhile { it.position >= low && it.time <= maxTicks }
                 .map { VelocityTime(velocity, it.time) } }
 
-fun findMaxYVelocity(xPos: List<VelocityTime>, yPos: List<VelocityTime>): Int {
+fun findMaxOnTargetVy(xPos: List<VelocityTime>, yPos: List<VelocityTime>): Int {
     val xByTime = xPos.groupBy { it.time }
     val yByTime = yPos.groupBy { it.time }
 
@@ -48,11 +49,19 @@ fun findMaxYVelocity(xPos: List<VelocityTime>, yPos: List<VelocityTime>): Int {
 }
 
 fun findMaximumHeight(xLow: Int, xHigh: Int, yLow: Int, yHigh: Int) =
-    yPositions(findMaxYVelocity(xInRange(xLow, xHigh), yInRange(yLow, yHigh))).takeWhile { it.position > 0 }.maxOf { it.position }
+    yPositions(
+        findMaxOnTargetVy(
+            vxInRange(xLow, xHigh, maxTicks(yLow, yHigh)),
+            vyInRange(yLow, yHigh, maxTicks(yLow, yHigh))
+        )
+    ).takeWhile { it.position > 0 }.maxOf { it.position }
+
+// With maximum Y velocity it will take 2 * v + 1 ticks to fall beyond the lowest bound
+private fun maxTicks(yLow: Int, yHigh: Int) = maxPossibleVy(yLow, yHigh) * 2 + 1
 
 fun totalDistinctVelocities(xLow: Int, xHigh: Int, yLow: Int, yHigh: Int): Int {
-    val xByTime = xInRange(xLow, xHigh).groupBy { it.time }
-    val yByTime = yInRange(yLow, yHigh).groupBy { it.time }
+    val xByTime = vxInRange(xLow, xHigh, maxTicks(yLow, yHigh)).groupBy { it.time }
+    val yByTime = vyInRange(yLow, yHigh, maxTicks(yLow, yHigh)).groupBy { it.time }
 
     return yByTime.filter { xByTime.containsKey(it.key) }
         .flatMap { (time, yList) ->
@@ -60,3 +69,4 @@ fun totalDistinctVelocities(xLow: Int, xHigh: Int, yLow: Int, yHigh: Int): Int {
         }
         .distinct().size
 }
+

@@ -24,12 +24,12 @@ class Day17Spec : FunSpec({
     }
 
     test("x in range") {
-        xInRange(20, 30).shouldContainAll(VelocityTime(6, 5), VelocityTime(6, 30), VelocityTime(7, 4), VelocityTime(9, 3))
-        xInRange(20, 30).shouldNotContainAll(VelocityTime(6, 4), VelocityTime(6, 31), VelocityTime(7, 3), VelocityTime(9, 4))
+        vxInRange(20, 30).shouldContainAll(VelocityTime(6, 5), VelocityTime(6, 30), VelocityTime(7, 4), VelocityTime(9, 3))
+        vxInRange(20, 30).shouldNotContainAll(VelocityTime(6, 4), VelocityTime(6, 31), VelocityTime(7, 3), VelocityTime(9, 4))
     }
 
     test("y in range") {
-        yInRange(-10, -5).shouldContainExactlyInAnyOrder(
+        vyInRange(-10, -5).shouldContainExactlyInAnyOrder(
             VelocityTime(-10, 1), VelocityTime(-9, 1), VelocityTime(-8, 1), VelocityTime(-7, 1), VelocityTime(-6, 1), VelocityTime(-5, 1),
             VelocityTime(-4, 2), VelocityTime(-3, 2), VelocityTime(-2, 2), VelocityTime(-2, 3), VelocityTime(-1, 3), VelocityTime(-1, 4),
             VelocityTime(0, 4), VelocityTime(0, 5), VelocityTime(1, 5), VelocityTime(1, 6), VelocityTime(2, 7), VelocityTime(3, 9), VelocityTime(4, 10),
@@ -38,7 +38,7 @@ class Day17Spec : FunSpec({
     }
 
     test("max y velocity") {
-        findMaxYVelocity(xInRange(20, 30), yInRange(-10, -5)).shouldBe(9)
+        findMaxOnTargetVy(vxInRange(20, 30), vyInRange(-10, -5)).shouldBe(9)
     }
 
     test("maximum height") {
