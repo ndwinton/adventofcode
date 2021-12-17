@@ -24,6 +24,7 @@ fun main(args: Array<String>) {
         "14" -> runDay14()
         "15" -> runDay15()
         "16" -> runDay16()
+        "17" -> runDay17()
         else -> println("""
             https://adventofcode.com/2021/
             
@@ -114,7 +115,16 @@ fun runDay15() {
 fun runDay16() {
     println("Part 1: " + sumVersions(parseBits(hexToBits(inputLines(16)[0])).value))
     println("Part 2: " + evaluatePackets(parseBits(hexToBits(inputLines(16)[0])).value))
-    printPackets(parseBits(hexToBits(inputLines(16)[0])).value)
+    //printPackets(parseBits(hexToBits(inputLines(16)[0])).value)
+}
+
+fun runDay17() {
+    // target area: x=AAA..BBB, y=CCC..DDD
+    val targetLine = inputLines(17)[0]
+    val cleaned = targetLine.replace(Regex("""^.*x=(-?\d+)\.\.(-?\d+).*y=(-?\d+)\.\.(-?\d+)"""), """$1 $2 $3 $4""")
+    val args = cleaned.split(" ").map { it.toInt() }.toTypedArray()
+    println("Part 1: " + findMaximumHeight(args[0], args[1], args[2], args[3]))
+    println("Part 2: " + totalDistinctVelocities(args[0], args[1], args[2], args[3]))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
