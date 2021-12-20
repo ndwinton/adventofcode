@@ -26,6 +26,7 @@ fun main(args: Array<String>) {
         "16" -> runDay16()
         "17" -> runDay17()
         "18" -> runDay18()
+        "20" -> runDay20()
         else -> println("""
             https://adventofcode.com/2021/
             
@@ -132,6 +133,12 @@ fun runDay18() {
     println("Part 1: " + Sno.part1(inputLines(18)))
     println("Part 2: " + Sno.part2(inputLines(18)))
 }
+
+fun runDay20() {
+    println("part 1: " + TrenchMap.parse(inputLines(20)).evolve(2).points.size)
+    println("part 1: " + TrenchMap.parse(inputLines(20)).evolve(50).points.size)
+}
+
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
     .let { if (it.exists()) it.bufferedReader() else System.`in`.bufferedReader() }
 
