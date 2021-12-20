@@ -25,6 +25,7 @@ fun main(args: Array<String>) {
         "15" -> runDay15()
         "16" -> runDay16()
         "17" -> runDay17()
+        "18" -> runDay18()
         else -> println("""
             https://adventofcode.com/2021/
             
@@ -127,6 +128,10 @@ fun runDay17() {
     println("Part 2: " + totalDistinctVelocities(args[0], args[1], args[2], args[3]))
 }
 
+fun runDay18() {
+    println("Part 1: " + Sno.part1(inputLines(18)))
+    println("Part 2: " + Sno.part2(inputLines(18)))
+}
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
     .let { if (it.exists()) it.bufferedReader() else System.`in`.bufferedReader() }
 
