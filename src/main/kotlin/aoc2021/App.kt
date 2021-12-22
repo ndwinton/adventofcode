@@ -27,6 +27,7 @@ fun main(args: Array<String>) {
         "17" -> runDay17()
         "18" -> runDay18()
         "20" -> runDay20()
+        "21" -> runDay21()
         else -> println("""
             https://adventofcode.com/2021/
             
@@ -135,8 +136,14 @@ fun runDay18() {
 }
 
 fun runDay20() {
-    println("part 1: " + TrenchMap.parse(inputLines(20)).evolve(2).points.size)
-    println("part 1: " + TrenchMap.parse(inputLines(20)).evolve(50).points.size)
+    println("Part 1: " + TrenchMap.parse(inputLines(20)).evolve(2).points.size)
+    println("Part 2: " + TrenchMap.parse(inputLines(20)).evolve(50).points.size)
+}
+
+fun runDay21() {
+    val start1 = inputLines(21).first().replace(Regex(".*:\\s"), "").toInt()
+    val start2 = inputLines(21).drop(1).first().replace(Regex(".*:\\s"), "").toInt()
+    println("Part 1: " + playDirac(DeterministicDie(), start1, start2))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
