@@ -26,6 +26,7 @@ fun main(args: Array<String>) {
         "16" -> runDay16()
         "17" -> runDay17()
         "18" -> runDay18()
+        "19" -> runDay19()
         "20" -> runDay20()
         "21" -> runDay21()
         else -> println("""
@@ -128,6 +129,10 @@ fun runDay17() {
     val args = cleaned.split(" ").map { it.toInt() }.toTypedArray()
     println("Part 1: " + findMaximumHeight(args[0], args[1], args[2], args[3]))
     println("Part 2: " + totalDistinctVelocities(args[0], args[1], args[2], args[3]))
+}
+
+fun runDay19() {
+    println("Part 1: " + uniqueBeacons(parseScanners(inputLines(19))))
 }
 
 fun runDay18() {
