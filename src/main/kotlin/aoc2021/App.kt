@@ -131,13 +131,14 @@ fun runDay17() {
     println("Part 2: " + totalDistinctVelocities(args[0], args[1], args[2], args[3]))
 }
 
-fun runDay19() {
-    println("Part 1: " + uniqueBeacons(parseScanners(inputLines(19))))
-}
-
 fun runDay18() {
     println("Part 1: " + Sno.part1(inputLines(18)))
     println("Part 2: " + Sno.part2(inputLines(18)))
+}
+
+fun runDay19() {
+    println("Part 1: " + uniqueBeacons(parseScanners(inputLines(19))))
+    println("Part 2: " + maxScannerManhattan(parseScanners(inputLines(19))))
 }
 
 fun runDay20() {

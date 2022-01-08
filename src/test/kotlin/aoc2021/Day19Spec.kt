@@ -1,7 +1,6 @@
 package aoc2021
 
 import io.kotest.core.spec.style.FunSpec
-import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldContainInOrder
 import io.kotest.matchers.shouldBe
 
@@ -184,5 +183,50 @@ class Day19Spec : FunSpec({
     test("unique beacons") {
         val scanners = parseScanners(example)
         uniqueBeacons(scanners).shouldBe(79)
+    }
+
+    test("matrix multiplication") {
+        (Tuple3(1, 2, 3) * Matrix3(
+            1, 2, 3,
+            -1, -2, -3,
+            10, 20, 30
+        )).shouldBe(Tuple3(14, -14, 140))
+    }
+
+    test("point subtraction") {
+        (Point3D(10, 20, 30) - Point3D(1, 2, 3)).shouldBe(Tuple3(9, 18, 27))
+    }
+
+    test("finding scanner for beacon") {
+        val scanners = parseScanners(example)
+
+        findScannerForBeacon(scanners, scanners[2].beacons[3]).shouldBe(scanners[2])
+    }
+
+    test("normalising") {
+        val scanners = parseScanners(example)
+        val normalised = normaliseScanners(scanners.take(1), scanners.drop(1))
+
+        normalised.forEach {
+            println("${it.name} ${it.beacons[0]}")
+        }
+
+        normalised[1].name.shouldBe("scanner 1")
+        normalised[1].beacons[0].position.shouldBe(Point3D(-618, -824, -621))
+        normalised[1].position.shouldBe(Point3D(68, -1246, -43))
+
+        normalised[3].name.shouldBe("scanner 4")
+        normalised[3].position.shouldBe(Point3D(-20, -1133, 1061))
+
+        normalised[4].name.shouldBe("scanner 2")
+        normalised[4].beacons[0].position.shouldBe(Point3D(456, -540, 1869))
+    }
+
+    test("manhattan for 3d-points") {
+        Point3D(1, 2, -3).manhattan(Point3D(-4, 5, 20)).shouldBe(31)
+    }
+
+    test("max manhattan") {
+        maxScannerManhattan(parseScanners(example)).shouldBe(3621)
     }
 })
