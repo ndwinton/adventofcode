@@ -74,7 +74,7 @@ fun uniqueBeacons(scanners: List<Scanner>): Int {
     return (total - duplicated)
 }
 
-fun findScannerForBeacon(scanners: List<Scanner>, beacon: Beacon): Scanner =
+fun findScannerForBeacon(scanners: Set<Scanner>, beacon: Beacon): Scanner =
     scanners.find { it.beacons.contains(beacon) }!!
 
 val transforms = listOf(
@@ -326,7 +326,7 @@ val transforms = listOf(
     ),
 )
 
-fun normaliseScanners(normalised: List<Scanner>, remaining: List<Scanner>): List<Scanner> {
+fun normaliseScanners(normalised: List<Scanner>, remaining: Set<Scanner>): List<Scanner> {
     if (remaining.isEmpty()) return normalised
 
     val overlaps = normalised.associateWith { norm -> remaining.map { norm.findOverlap(it) } }
@@ -334,17 +334,17 @@ fun normaliseScanners(normalised: List<Scanner>, remaining: List<Scanner>): List
     // non-normalised scanners. These sub-lists contain pairs for corresponding normalised/non-normalised
     // beacons
 
-    val oldNewPairs = overlaps.flatMap { (scanner, beaconPairLists) ->
+    val oldNewPairs = overlaps.flatMap { (_, beaconPairLists) ->
         beaconPairLists
             .filter { it.isNotEmpty() }
             .map { createScannerWithRemappedBeacons(remaining, it) }
     }
     val old = oldNewPairs.map { it.first }
     val new = oldNewPairs.map { it.second }
-    return normaliseScanners(normalised + new, remaining - old)
+    return normaliseScanners(normalised + new, remaining - old.toSet())
 }
 
-private fun createScannerWithRemappedBeacons(remaining: List<Scanner>, pairList: List<Pair<Beacon,Beacon>>): Pair<Scanner, Scanner> {
+private fun createScannerWithRemappedBeacons(remaining: Set<Scanner>, pairList: List<Pair<Beacon,Beacon>>): Pair<Scanner, Scanner> {
     val normalVector = pairList[1].first.position - pairList[0].first.position
     val nonNormalVector = pairList[1].second.position - pairList[0].second.position
     val transform = findTransform(normalVector, nonNormalVector)
@@ -363,6 +363,6 @@ fun findTransform(normalised: Tuple3, nonNormalised: Tuple3): Matrix3 {
 }
 
 fun maxScannerManhattan(scanners: List<Scanner>): Int =
-    normaliseScanners(scanners.take(1), scanners.drop(1)).let { normalised ->
+    normaliseScanners(scanners.take(1), scanners.drop(1).toSet()).let { normalised ->
         normalised.cartesianProduct(normalised).map { it.first.position.manhattan(it.second.position) }.maxOf { it }
     }

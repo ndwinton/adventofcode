@@ -200,12 +200,12 @@ class Day19Spec : FunSpec({
     test("finding scanner for beacon") {
         val scanners = parseScanners(example)
 
-        findScannerForBeacon(scanners, scanners[2].beacons[3]).shouldBe(scanners[2])
+        findScannerForBeacon(scanners.toSet(), scanners[2].beacons[3]).shouldBe(scanners[2])
     }
 
     test("normalising") {
         val scanners = parseScanners(example)
-        val normalised = normaliseScanners(scanners.take(1), scanners.drop(1))
+        val normalised = normaliseScanners(scanners.take(1), scanners.drop(1).toSet())
 
         normalised.forEach {
             println("${it.name} ${it.beacons[0]}")
