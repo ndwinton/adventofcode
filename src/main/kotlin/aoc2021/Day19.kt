@@ -56,7 +56,7 @@ fun parseScanners(lines: List<String>, result: List<Scanner> = emptyList()): Lis
     return parseScanners(lines.drop(beacons.size + 2), result + listOf(Scanner(name, beacons)))
 }
 
-fun findEquivalentBeacons(scanners: List<Scanner>, result: Map<Beacon,List<Beacon>> = emptyMap()): Map<Beacon,List<Beacon>> {
+tailrec fun findEquivalentBeacons(scanners: List<Scanner>, result: Map<Beacon,List<Beacon>> = emptyMap()): Map<Beacon,List<Beacon>> {
     if (scanners.isEmpty()) return result
 
     val current = scanners.first()
