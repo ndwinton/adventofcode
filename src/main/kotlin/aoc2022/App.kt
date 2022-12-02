@@ -46,6 +46,7 @@ fun runDay01() {
 }
 
 fun runDay02() {
+    println("Part 1: " + totalScoreForRPSLines(inputLines(2)))
 }
 
 fun runDay03() {
