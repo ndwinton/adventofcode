@@ -26,4 +26,23 @@ class Day2202Spec : FunSpec ({
             C Z
         """.trimIndent().split("\n")).shouldBe(15)
     }
+
+    test("translate stragegy") {
+        table(
+            headers("them", "strategy", "us"),
+            row("A", "Y", "A"),
+            row("B", "X", "A"),
+            row("C", "Z", "A")
+        ).forAll() { them, strategy, us ->
+            translateStrategy(them, strategy).shouldBe(us)
+        }
+    }
+
+    test("total score for new strategy") {
+        totalScoreForRPSLinesNewStrategy("""
+            A Y
+            B X
+            C Z
+        """.trimIndent().split("\n")).shouldBe(12)
+    }
 })
