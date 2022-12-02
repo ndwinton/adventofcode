@@ -152,7 +152,7 @@ fun runDay21() {
     println("Part 1: " + playDirac(DeterministicDie(), start1, start2))
 }
 
-fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/%02d.txt", dayNum))
+fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2021/%02d.txt", dayNum))
     .let { if (it.exists()) it.bufferedReader() else System.`in`.bufferedReader() }
 
 fun inputLines(dayNum: Int): List<String> = inputForDay(dayNum).readLines()
