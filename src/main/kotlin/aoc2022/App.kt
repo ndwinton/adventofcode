@@ -51,6 +51,8 @@ fun runDay02() {
 }
 
 fun runDay03() {
+    println("Part 1: " + rucksackPriorityTotal(inputLines(3)))
+    println("Part 2: " + rucksackBadgeTotal(inputLines(3)))
 }
 
 fun runDay04() {
