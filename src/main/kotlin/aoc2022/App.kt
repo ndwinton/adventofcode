@@ -56,6 +56,8 @@ fun runDay03() {
 }
 
 fun runDay04() {
+    println("Part 1: " + countOfFullyContainedRanges(inputLines(4)))
+    println("Part 2: " + countOfOverlappingRanges(inputLines(4)))
 }
 
 fun runDay05() {
