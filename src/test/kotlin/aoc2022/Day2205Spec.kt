@@ -32,5 +32,9 @@ class Day2205Spec : FunSpec ({
     test("apply moves to crates") {
         applyMovesToCrates(sampleLines).shouldBe("CMZ")
     }
+
+    test("apply moves to crates, multi-move version") {
+        applyMovesToCratesMultiMove(sampleLines).shouldBe("MCD")
+    }
 })
 

@@ -62,6 +62,7 @@ fun runDay04() {
 
 fun runDay05() {
     println("Part 1: " + applyMovesToCrates(inputLines(5)))
+    println("Part 2: " + applyMovesToCratesMultiMove(inputLines(5)))
 }
 
 fun runDay06() {

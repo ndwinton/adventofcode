@@ -35,3 +35,16 @@ fun applyMovesToCrates(lines: List<String>): String {
     }
     return endState.map { it.first() }.joinToString("")
 }
+
+fun applyMovesToCratesMultiMove(lines: List<String>): String {
+    val stacks = parseCrateStackStateLines(lines)
+    val moves = parseCrateMoveLines(lines)
+    val endState = moves.fold(stacks.toMutableList()) { currentStacks, move ->
+        val fromStack = currentStacks[move.from - 1]
+        val toStack = currentStacks[move.to - 1]
+        currentStacks[move.to - 1] = fromStack.take(move.count) + toStack
+        currentStacks[move.from - 1] = fromStack.drop(move.count)
+        currentStacks
+    }
+    return endState.map { it.first() }.joinToString("")
+}
