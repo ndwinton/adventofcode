@@ -1,5 +1,7 @@
 package aoc2021
 
+import common.transpose
+
 typealias Sheet = List<List<Int>>
 
 // I know that this whole implementation is horrendously inefficient.

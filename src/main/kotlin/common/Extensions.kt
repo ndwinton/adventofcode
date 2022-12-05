@@ -1,4 +1,4 @@
-package aoc2021
+package common
 
 // Based on https://gist.github.com/clementgarbay/49288c006252955c2a3c6139a61ca92a
 /**

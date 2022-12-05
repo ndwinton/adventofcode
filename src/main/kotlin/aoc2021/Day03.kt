@@ -1,5 +1,7 @@
 package aoc2021
 
+import common.transpose
+
 object Day03 {
     fun gammaEpsilon(lines: List<String>): Pair<Int,Int> =
         Pair(gammaDigits(lines).toInt(2), epsilonDigits(lines).toInt(2))

@@ -1,5 +1,6 @@
 package aoc2021
 
+import common.cartesianProduct
 import java.lang.IllegalArgumentException
 
 // This is a bit of a mess. But it just goes to show that it's possible

@@ -1,6 +1,6 @@
 package aoc2022
 
-import aoc2021.transpose
+import common.transpose
 
 fun parseCrateStackStateLines(lines: List<String>): List<String> {
     val indices = lines.dropWhile { !it.contains("1") }.first()

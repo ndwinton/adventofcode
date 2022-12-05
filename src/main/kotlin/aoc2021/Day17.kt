@@ -1,5 +1,6 @@
 package aoc2021
 
+import common.cartesianProduct
 import kotlin.math.abs
 import kotlin.math.max
 

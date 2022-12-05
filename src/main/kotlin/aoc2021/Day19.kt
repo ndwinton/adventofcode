@@ -1,5 +1,6 @@
 package aoc2021
 
+import common.cartesianProduct
 import kotlin.math.abs
 
 data class Scanner(val name: String, val beacons: List<Beacon>, val position: Point3D = Point3D(0, 0, 0)) {
