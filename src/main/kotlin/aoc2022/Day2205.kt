@@ -23,28 +23,17 @@ fun parseCrateMoveLines(lines: List<String>): List<CrateMove> =
         }
         .map { CrateMove(it[0], it[1], it[2]) }
 
-fun applyMovesToCrates(lines: List<String>): String {
+fun applyMovesToCrates(lines: List<String>, substackMover: (String) -> String = { it.reversed() }): String {
     val stacks = parseCrateStackStateLines(lines)
     val moves = parseCrateMoveLines(lines)
     val endState = moves.fold(stacks.toMutableList()) { currentStacks, move ->
         val fromStack = currentStacks[move.from - 1]
         val toStack = currentStacks[move.to - 1]
-        currentStacks[move.to - 1] = fromStack.take(move.count).reversed() + toStack
+        currentStacks[move.to - 1] = substackMover(fromStack.take(move.count)) + toStack
         currentStacks[move.from - 1] = fromStack.drop(move.count)
         currentStacks
     }
     return endState.map { it.first() }.joinToString("")
 }
 
-fun applyMovesToCratesMultiMove(lines: List<String>): String {
-    val stacks = parseCrateStackStateLines(lines)
-    val moves = parseCrateMoveLines(lines)
-    val endState = moves.fold(stacks.toMutableList()) { currentStacks, move ->
-        val fromStack = currentStacks[move.from - 1]
-        val toStack = currentStacks[move.to - 1]
-        currentStacks[move.to - 1] = fromStack.take(move.count) + toStack
-        currentStacks[move.from - 1] = fromStack.drop(move.count)
-        currentStacks
-    }
-    return endState.map { it.first() }.joinToString("")
-}
+fun applyMovesToCratesMultiMove(lines: List<String>): String = applyMovesToCrates(lines) { it }
