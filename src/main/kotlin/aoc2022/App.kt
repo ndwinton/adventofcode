@@ -61,6 +61,7 @@ fun runDay04() {
 }
 
 fun runDay05() {
+    println("Part 1: " + applyMovesToCrates(inputLines(5)))
 }
 
 fun runDay06() {
