@@ -67,6 +67,7 @@ fun runDay05() {
 
 fun runDay06() {
     println("Part 1: " + findStartOfPacketMarker(inputAsText(6)))
+    println("Part 2: " + findStartOfMessageMarker(inputAsText(6)))
 }
 
 fun runDay07() {
