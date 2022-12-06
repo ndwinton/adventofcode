@@ -1,9 +1,10 @@
 package aoc2022
 
-tailrec fun findStartOfPacketMarker(input: String, offset: Int = 0): Int =
-    if (input.take(4).toSet().size == 4) offset + 4
-    else findStartOfPacketMarker(input.drop(1), offset + 1)
+fun findStartOfPacketMarker(input: String, offset: Int = 0): Int = findStartOfUniqueSequence(input, 4)
 
-tailrec fun findStartOfMessageMarker(input: String, offset: Int = 0): Int =
-    if (input.take(14).toSet().size == 14) offset + 14
-    else findStartOfMessageMarker(input.drop(1), offset + 1)
+fun findStartOfMessageMarker(input: String, offset: Int = 0): Int = findStartOfUniqueSequence(input, 14)
+
+private tailrec fun findStartOfUniqueSequence(input: String, size: Int, offset: Int = 0): Int =
+    // Note: No guard against exhausting input
+    if (input.take(size).toSet().size == size) offset + size
+    else findStartOfUniqueSequence(input.drop(1), size, offset + 1)
