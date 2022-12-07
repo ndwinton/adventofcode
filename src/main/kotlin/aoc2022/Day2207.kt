@@ -49,3 +49,9 @@ private fun buildDirectoryTreeInner(commands: List<String>, current: Dir): Unit 
 
 fun sumOfDirsUnder100k(commands: List<String>) =
     buildDirectoryTree(commands).findAllDirs().filter { it.size <= 100000L }.sumOf { it.size }
+
+fun findDeletionCandidate(commands: List<String>): Long =
+    buildDirectoryTree(commands).let { root ->
+        val available = 70000000L - root.size
+        root.findAllDirs().map { it.size }.sorted().dropWhile { available + it < 30000000L }.first()
+    }

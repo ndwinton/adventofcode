@@ -49,5 +49,9 @@ class Day2207Spec : FunSpec({
     test("sum <= 100k") {
         sumOfDirsUnder100k(input).shouldBe(95437L)
     }
+
+    test("find deletion candidate") {
+        findDeletionCandidate(input).shouldBe(24933642L)
+    }
 })
 
