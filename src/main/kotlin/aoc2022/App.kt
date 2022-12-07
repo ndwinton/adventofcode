@@ -71,6 +71,7 @@ fun runDay06() {
 }
 
 fun runDay07() {
+    println("Part 1: " + sumOfDirsUnder100k(inputLines(7)))
 }
 
 fun runDay08() {
