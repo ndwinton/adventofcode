@@ -76,6 +76,7 @@ fun runDay07() {
 }
 
 fun runDay08() {
+    println("Part 1: " + visibilityCount(inputLines(8)))
 }
 
 fun runDay09() {
