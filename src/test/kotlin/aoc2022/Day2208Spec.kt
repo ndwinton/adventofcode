@@ -44,6 +44,29 @@ class Day2208Spec : FunSpec({
     test("visibility count") {
         visibilityCount(input).shouldBe(21)
     }
+
+    test("scenic scores for row looking right") {
+        scenicScoresLookingRight(listOf(2, 5, 5, 1, 2)).shouldBe(listOf(1, 1, 2, 1, 0))
+        scenicScoresLookingRight(listOf(2, 1, 5, 5, 2)).shouldBe(listOf(2, 1, 1, 1, 0))
+    }
+
+    test("scenic scores for row") {
+        scenicScoresForRow(listOf(2, 5, 5, 1, 2)).shouldBe(listOf(0, 1, 2, 1, 0))
+    }
+
+    test("scenic scores for entire map") {
+        heightMapScenicScores(parseTreeHeightMap(input)).shouldBe(listOf(
+            listOf(0, 0, 0, 0, 0),
+            listOf(0, 1, 4, 1, 0),
+            listOf(0, 6, 1, 2, 0),
+            listOf(0, 1, 8, 3, 0),
+            listOf(0, 0, 0, 0, 0),
+        ))
+    }
+
+    test("max scenic score") {
+        maxScenicScore(input).shouldBe(8)
+    }
 })
 
 

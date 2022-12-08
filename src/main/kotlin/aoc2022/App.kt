@@ -77,6 +77,7 @@ fun runDay07() {
 
 fun runDay08() {
     println("Part 1: " + visibilityCount(inputLines(8)))
+    println("Part 2: " + maxScenicScore(inputLines(8)))
 }
 
 fun runDay09() {
@@ -123,10 +124,10 @@ fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2022/%02d.txt"
 
 fun inputLines(dayNum: Int): List<String> = inputForDay(dayNum).readLines()
 
-fun inputAsIntList(dayNum: Int) = inputLines(dayNum).map { it.toInt() }
-
-fun inputLineAsIntList(line: String) = line.split(",").map { it.toInt() }
-
-fun inputAsLongList(dayNum: Int) = inputLines(dayNum).map { it.toLong() }
+//fun inputAsIntList(dayNum: Int) = inputLines(dayNum).map { it.toInt() }
+//
+//fun inputLineAsIntList(line: String) = line.split(",").map { it.toInt() }
+//
+//fun inputAsLongList(dayNum: Int) = inputLines(dayNum).map { it.toLong() }
 
 fun inputAsText(dayNum: Int) : String = inputForDay(dayNum).readText()
