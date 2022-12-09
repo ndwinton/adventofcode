@@ -81,6 +81,7 @@ fun runDay08() {
 }
 
 fun runDay09() {
+    println("Part 1: " + ropeTailStepsCount(inputLines(9)))
 }
 
 fun runDay10() {
