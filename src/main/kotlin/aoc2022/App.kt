@@ -86,6 +86,7 @@ fun runDay09() {
 
 fun runDay10() {
     println("Part 1: " + signalStrengthSums(inputLines(10)))
+    drawPixels(inputLines(10))
 }
 
 fun runDay11() {
