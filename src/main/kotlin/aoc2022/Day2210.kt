@@ -17,7 +17,6 @@ fun signalStrengthSums(instructions: List<String>) =
 fun drawPixels(instructions: List<String>) {
     (1 .. 240).map {
         val x = runInstructionsToStep(instructions, it)
-        println("$it - $x")
         if (((it - 1) % 40) in (x - 1 .. x + 1)) "#" else "."
     }.joinToString("").chunked(40).forEach {println(it) }
 }
