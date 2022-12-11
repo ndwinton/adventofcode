@@ -90,6 +90,7 @@ fun runDay10() {
 }
 
 fun runDay11() {
+    println("Part 1: " + monkeyBusiness(inputAsText(11)))
 }
 
 fun runDay12() {
