@@ -1,7 +1,7 @@
 package aoc2022
 
-typealias Op = (Int) -> Int
-class Monkey(val id: Int = -1, val items: MutableList<Int> = mutableListOf(), val op: Op = { it }, val divisor: Int = 1, val onTrue: Int = -1, val onFalse: Int = -1) {
+typealias Op = (Long) -> Long
+class Monkey(val id: Int = -1, val items: MutableList<Long> = mutableListOf(), val op: Op = { it }, val divisor: Int = 1, val onTrue: Int = -1, val onFalse: Int = -1) {
     var inspections = 0
 
     override fun toString(): String {
@@ -12,7 +12,7 @@ class Monkey(val id: Int = -1, val items: MutableList<Int> = mutableListOf(), va
 fun parseMonkeyText(text: String): Monkey {
     val lines = text.split("\n")
     val id = lines[0].trim().split(":", " ")[1].toInt()
-    val items = lines[1].split(":")[1].trim().split(" ", ",").filter { it.isNotEmpty() }.map { it.toInt() }
+    val items = lines[1].split(":")[1].trim().split(" ", ",").filter { it.isNotEmpty() }.map { it.toLong() }
     val op = parseOp(lines[2])
     val divisor = lines[3].trim().split(" ").last().toInt()
     val onTrue = lines[4].trim().split(" ").last().toInt()
@@ -31,21 +31,22 @@ private fun parseOp(line: String): Op {
 
 fun parseAllMonkeys(text: String) = text.split("\n\n").map { parseMonkeyText(it) }
 
-fun runRound(monkeys: List<Monkey>, limitFactor: Int = 3, limitMod: Int = Int.MAX_VALUE): Unit {
+fun runRound(monkeys: List<Monkey>, limitFactor: Int = 3, limitMod: Int = Int.MAX_VALUE) {
     monkeys.forEach { monkey ->
         monkey.inspections += monkey.items.size
         monkey.items.forEach { item ->
             val newItem = (monkey.op.invoke(item) / limitFactor) % limitMod
-            if (newItem % monkey.divisor == 0) monkeys[monkey.onTrue].items.add(newItem)
+            if (newItem % monkey.divisor == 0L) monkeys[monkey.onTrue].items.add(newItem)
             else monkeys[monkey.onFalse].items.add(newItem)
         }
         monkey.items.removeAll { true }
     }
 }
 
-fun monkeyBusiness(text: String, limitFactor: Int = 3, limitMod: Int = Int.MAX_VALUE): Int {
+fun monkeyBusiness(text: String, rounds: Int = 20, limitFactor: Int = 3): Long {
     val monkeys = parseAllMonkeys(text)
-    (1 .. 20).forEach { runRound(monkeys, limitFactor, limitMod) }
-    return monkeys.map { it.inspections }.sortedDescending().take(2).let { it[0] * it[1] }
+    val limitMod = monkeys.fold(1) { acc, monkey -> acc * monkey.divisor }
+    (1 .. rounds).forEach { runRound(monkeys, limitFactor, limitMod) }
+    return monkeys.map { it.inspections }.sortedDescending().take(2).let { it[0].toLong() * it[1].toLong() }
 }
 

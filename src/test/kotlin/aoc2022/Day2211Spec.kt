@@ -14,7 +14,7 @@ class Day2211Spec : FunSpec({
         |    If false: throw to monkey 3
     """.trimMargin()
 
-    var example = """
+    val example = """
         |Monkey 0:
         |  Starting items: 79, 98
         |  Operation: new = old * 19
@@ -63,12 +63,16 @@ class Day2211Spec : FunSpec({
     }
 
     test("just do a round") {
-        var monkeys = parseAllMonkeys(example)
+        val monkeys = parseAllMonkeys(example)
         runRound(monkeys)
         monkeys.forEach { println(it) }
     }
 
     test("monkey business") {
-        monkeyBusiness(example).shouldBe(10605)
+        monkeyBusiness(example).shouldBe(10605L)
+    }
+
+    test("monkey business part 2") {
+        monkeyBusiness(example, 10000, 1).shouldBe(2713310158L)
     }
 })

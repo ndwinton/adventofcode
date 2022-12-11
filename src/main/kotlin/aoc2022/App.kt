@@ -91,6 +91,8 @@ fun runDay10() {
 
 fun runDay11() {
     println("Part 1: " + monkeyBusiness(inputAsText(11)))
+    println("Part 2: " + monkeyBusiness(inputAsText(11), 10000, 1))
+
 }
 
 fun runDay12() {
