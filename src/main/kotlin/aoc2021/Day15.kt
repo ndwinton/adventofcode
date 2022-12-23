@@ -1,55 +1,8 @@
 package aoc2021
 
-import java.util.*
+import common.Node
+import common.aStar
 import kotlin.math.abs
-
-interface Node {
-    var cameFrom: Node
-    var fScore: Int
-    var gScore: Int
-    fun neighbours(): List<Node>
-    fun weight(neighbour: Node): Int
-}
-
-typealias Heuristic = (current: Node, goal: Node) -> Int
-
-fun aStar(start: Node, goal: Node, h: Heuristic): List<Node> {
-    val openSet: PriorityQueue<Node> = PriorityQueue(compareBy { it.fScore })
-    openSet.add(start)
-
-    fun reconstructPath(start: Node, current: Node): List<Node> {
-        val totalPath = mutableListOf(current)
-        var next = current
-        do {
-            next = next.cameFrom
-            totalPath.add(next)
-        }
-        while (next != start)
-
-        return totalPath.reversed()
-    }
-
-    start.gScore = 0
-    start.fScore = h(start, goal)
-
-    while (openSet.isNotEmpty()) {
-        val current = openSet.remove()
-        if (current == goal) return reconstructPath(start, current)
-
-        current.neighbours().forEach { neighbour ->
-            val tentativeGScore = current.gScore + current.weight(neighbour)
-            if (tentativeGScore < neighbour.gScore) {
-                neighbour.cameFrom = current
-                neighbour.gScore = tentativeGScore
-                neighbour.fScore = tentativeGScore + h(neighbour, goal)
-                if (openSet.contains(neighbour)) openSet.remove(neighbour)
-                openSet.add(neighbour)
-            }
-        }
-    }
-
-    return emptyList()
-}
 
 class GridNode(val row: Int, val col: Int, val weight: Int) : Node {
     override var cameFrom: Node = this
@@ -109,7 +62,6 @@ fun manhattan(start: Node, end: Node): Int {
     val endGridNode = end as GridNode
     return abs(endGridNode.col - startGridNode.col) + abs(end.row - startGridNode.row)
 }
-
 fun day15part1(lines: List<String>): Int {
     GridNode.loadGrid(lines)
     val path = aStar(GridNode.getNode(0, 0), GridNode.getNode(lines.size - 1, lines[0].length - 1), ::manhattan)

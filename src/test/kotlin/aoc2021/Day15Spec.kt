@@ -1,5 +1,6 @@
 package aoc2021
 
+import common.aStar
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 
