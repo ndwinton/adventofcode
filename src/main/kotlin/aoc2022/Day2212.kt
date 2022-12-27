@@ -64,6 +64,8 @@ class HeightMapNode(val row: Int, val col: Int, val height: Char) : Node {
 
         fun nodeWithHeight(height: Char) =
             grid.first { it.map { node -> node.height }.contains(height) }.first { it.height == height }
+
+        fun allNodesWithHeight(height: Char) = grid.flatMap { row -> row.filter { it.height == height } }
     }
 }
 
@@ -77,4 +79,10 @@ fun fewestStepsToEndpoint(lines: List<String>): Int {
     HeightMapNode.loadGrid(lines)
     val path = aStar(HeightMapNode.nodeWithHeight('S'), HeightMapNode.nodeWithHeight('E'), ::manhattan)
     return path.size - 1
+}
+
+fun fewestFromAnyA(lines: List<String>): Int {
+    HeightMapNode.loadGrid(lines)
+    val end = HeightMapNode.nodeWithHeight('E')
+    return HeightMapNode.allNodesWithHeight('a').map { aStar(it, end, ::manhattan).size }.filter { it > 0 }.min() - 1
 }

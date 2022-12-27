@@ -97,6 +97,7 @@ fun runDay11() {
 
 fun runDay12() {
     println("Part 1: " + fewestStepsToEndpoint(inputLines(12)))
+    println("Part 2: " + fewestFromAnyA(inputLines(12)))
 }
 
 fun runDay13() {

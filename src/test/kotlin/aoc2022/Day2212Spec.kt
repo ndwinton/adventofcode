@@ -22,4 +22,8 @@ class Day2212Spec : FunSpec({
     test("wrapper") {
         fewestStepsToEndpoint(example).shouldBe(31)
     }
+
+    test("shortest path") {
+        fewestFromAnyA(example).shouldBe(29)
+    }
 })
