@@ -101,6 +101,7 @@ fun runDay12() {
 }
 
 fun runDay13() {
+    println("Part 1: " + sumOfOrderedPairIndices(inputLines(13)))
 }
 
 fun runDay14() {
