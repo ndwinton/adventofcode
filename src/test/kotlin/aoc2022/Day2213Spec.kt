@@ -103,7 +103,11 @@ class Day2213Spec : FunSpec({
         [1,[2,[3,[4,[5,6,0]]]],8,9]
     """.trimIndent().split("\n")
 
-    test("part 1 calculation") {
+    test("part 1 - ordered pair calculation") {
         sumOfOrderedPairIndices(pairs).shouldBe(13)
+    }
+
+    test("part 2 - decoder key") {
+        decoderKey(pairs).shouldBe(140)
     }
 })

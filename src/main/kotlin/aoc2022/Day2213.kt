@@ -57,7 +57,7 @@ object CloseToken : Token()
 class NumberToken(val value: Int) : Token()
 
 fun tokenisePackets(packetString: String): List<Token> =
-    Regex("""(\[|\]|,|\d+)""")
+    Regex("""(\[|]|,|\d+)""")
         .findAll(packetString)
         .map { it.groupValues[1] }
         .filter { it != "," }
@@ -77,3 +77,11 @@ fun sumOfOrderedPairIndices(lines: List<String>) =
             else 0
         }.sum()
 
+fun decoderKey(lines: List<String>): Int {
+    val marker1 = parsePackets("[[2]]")
+    val marker2 = parsePackets("[[6]]")
+    return (lines.filter { it.isNotBlank() }.map { parsePackets(it) } + listOf(marker1, marker2))
+        .sorted()
+        .mapIndexed { index, element -> if (element == marker1 || element == marker2) (index + 1) else 1 }
+        .reduce(Int::times)
+}
