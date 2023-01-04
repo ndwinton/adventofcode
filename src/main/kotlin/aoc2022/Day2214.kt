@@ -51,7 +51,6 @@ class RockGrid(val rocks: Set<Coord>, val bounds: Pair<Coord, Coord>, val sand: 
     fun addGrain(): RockGrid =
         when (val finish = fallFrom(500, 0)) {
             abyss -> this
-            Coord(500,0) -> this
             else -> RockGrid(rocks, bounds, sand + finish)
         }
 
@@ -77,4 +76,8 @@ class RockGrid(val rocks: Set<Coord>, val bounds: Pair<Coord, Coord>, val sand: 
     }
 }
 
-fun loadRockGrid(input: List<String>) = RockGrid(input.map { parseCoordLine(it) })
+fun loadRockGrid(input: List<String>, addFloor: Boolean = false): RockGrid {
+    val grid = RockGrid(input.map { parseCoordLine(it) })
+    return if (addFloor) RockGrid(grid.rocks + (0 .. 1000).map { Coord(it, grid.bounds.second.y + 2) }.toSet(),
+        Pair(Coord(0, 0), Coord(1000, grid.bounds.second.y + 2))) else grid
+}

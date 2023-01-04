@@ -106,7 +106,14 @@ fun runDay13() {
 }
 
 fun runDay14() {
-    println("Part 1: " + loadRockGrid(inputLines(14)).fill().sand.size)
+    val part1 = loadRockGrid(inputLines(14)).fill()
+    println("Part 1: " + part1.sand.size)
+//    println(loadRockGrid(part1)
+//    println("------------------")
+    val part2 = loadRockGrid(inputLines(14), true).fill()
+    println("Part 2: " + part2.sand.size)
+//    println(loadRockGrid(part2)
+
 }
 
 fun runDay15() {

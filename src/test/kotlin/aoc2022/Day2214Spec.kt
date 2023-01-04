@@ -80,6 +80,7 @@ class Day2214Spec : FunSpec({
         filled.sand.size.shouldBe(24)
     }
 
-    test("part 2") {
+    test("add floor") {
+        loadRockGrid(example, true).fill().sand.size.shouldBe(93)
     }
 })
