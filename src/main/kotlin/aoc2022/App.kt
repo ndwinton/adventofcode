@@ -106,6 +106,7 @@ fun runDay13() {
 }
 
 fun runDay14() {
+    println("Part 1: " + loadRockGrid(inputLines(14)).fill().sand.size)
 }
 
 fun runDay15() {
