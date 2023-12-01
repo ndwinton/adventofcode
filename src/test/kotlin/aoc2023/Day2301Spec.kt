@@ -56,13 +56,16 @@ class Day2301Spec : FunSpec ({
     test("calibration value with words") {
         table(
             headers("input", "output"),
-            row("21nine", 29),
-            row("8wothree", 83),
-            row("abc12threexyz", 13),
-            row("x2ne3four", 24),
-            row("49eightseven2", 42),
-            row("z1ight234", 14),
-            row("7pqrst6teen", 76)
+            row("two1nine", 29),
+            row("eightwothree", 83),
+            row("abcone2threexyz", 13),
+            row("xtwone3four", 24),
+            row("4nineeightseven2", 42),
+            row("zoneight234", 14),
+            row("7pqrstsixteen", 76),
+            row("8kgplfhvtvqpfsbldd9oneighthg", 88),
+            row("eighthree", 83),
+            row("sevenine", 79),
         ).forAll { input, output -> calibrationValueWithWords(input).shouldBe(output) }
     }
 })

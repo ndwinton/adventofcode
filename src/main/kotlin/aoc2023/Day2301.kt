@@ -5,12 +5,7 @@ import java.util.StringJoiner
 fun calibrationValueOfLine(line: String) =
     line.filter { it.isDigit() }.let { it.first().toString() + it.last().toString() }.toInt()
 
-fun calibrationValueWithWords(line: String): Int{
-    val decoded = transformAllNumberWords(line)
-    val result = calibrationValueOfLine(decoded)
-    println("$line -> $decoded -> $result")
-    return result
-}
+fun calibrationValueWithWords(line: String) = calibrationValueOfLine(transformAllNumberWords(line))
 
 fun transformFirstNumberWord(line: String) =
     line.replace(Regex("^(.*?)(one|two|three|four|five|six|seven|eight|nine)")) { match ->
