@@ -3,19 +3,21 @@
  */
 package aoc2023
 
+import aoc2021.Tuple3
 import java.io.File
 import java.io.Reader
 
 fun main(args: Array<String>) {
     when (args[0]) {
         "1" -> runDay01()
+        "2" -> runDay02()
 
         else -> println("""
             https://adventofcode.com/2022/
             
             Usage: App day-number
             
-            Inputs are assumed to be in 'inputs/2024/NN.txt' where 'NN' is the 2-digit day number.
+            Inputs are assumed to be in 'inputs/2023/NN.txt' where 'NN' is the 2-digit day number.
             If the file isn't present, it reads from stdin instead.
             """.trimIndent())
     }
@@ -26,6 +28,10 @@ fun runDay01() {
     println("Part 2: " + inputLines(1).sumOf { calibrationValueWithWords(it) })
 }
 
+fun runDay02() {
+    println("Part 1: " + possibleLineIndexSum(inputLines(2), Tuple3(12, 13, 14)))
+    println("Part 2: " + inputLines(2).sumOf { powerOfMinPossibleTuple(it) })
+}
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))
     .let { if (it.exists()) it.bufferedReader() else System.`in`.bufferedReader() }

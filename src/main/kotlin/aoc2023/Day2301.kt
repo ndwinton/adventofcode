@@ -22,6 +22,6 @@ fun transformFirstNumberWord(line: String) =
         ).getOrDefault(match.groupValues[2], "?")
     }
 
-tailrec fun transformAllNumberWords(line: String): String = transformFirstNumberWord(line).let {
+fun transformAllNumberWords(line: String): String = transformFirstNumberWord(line).let {
     if (it == line) line else transformAllNumberWords(it)
 }
