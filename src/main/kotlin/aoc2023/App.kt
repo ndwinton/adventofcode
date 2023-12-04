@@ -12,6 +12,7 @@ fun main(args: Array<String>) {
         "1" -> runDay01()
         "2" -> runDay02()
         "3" -> runDay03()
+        "4" -> runDay04()
 
         else -> println("""
             https://adventofcode.com/2022/
@@ -37,6 +38,11 @@ fun runDay02() {
 fun runDay03() {
     println("Part 1: " + sumOfPartNumbers(inputLines(3)))
     //println("Part 2: " + inputLines(2).sumOf { powerOfMinPossibleTuple(it) })
+}
+
+fun runDay04() {
+    println("Part 1: " + inputLines(4).sumOf { pointsPerCard(it) })
+    println("Part 2: " + playAllScratchcards(0, buildScratchcardStartState(inputLines(4))))
 }
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))
     .let { if (it.exists()) it.bufferedReader() else System.`in`.bufferedReader() }
