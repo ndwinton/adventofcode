@@ -48,6 +48,7 @@ fun runDay04() {
 
 fun runDay05() {
     println("Part 1:" + lowestLocationForSeeds(parseAlmanac(inputAsText(5))))
+    println("Part 2:" + lowestLocationForSeedsUsingRanges(parseAlmanac(inputAsText(5))))
 }
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))
     .let { if (it.exists()) it.bufferedReader() else System.`in`.bufferedReader() }

@@ -31,3 +31,14 @@ fun applySeedTransforms(seed: Long, groups: List<TransformGroup>): Long =
 
 fun lowestLocationForSeeds(almanac: Almanac): Long =
     almanac.seeds.minOf { applySeedTransforms(it, almanac.groups) }
+
+// Brute force here is pretty horrible but, hey, I'm running on an M1 Mac ;-)
+// In an ideal world, I'd be smarter about doing comparisons with overlapping
+// ranges and fragmenting the seed range when necessary. But I haven't got time
+// to spend on this now.
+fun lowestLocationForSeedsUsingRanges(almanac: Almanac): Long =
+    almanac.seeds
+        .chunked(2)
+        .minOf { (it[0] until it[0] + it[1])
+            .minOf { seed -> applySeedTransforms(seed, almanac.groups) }
+        }
