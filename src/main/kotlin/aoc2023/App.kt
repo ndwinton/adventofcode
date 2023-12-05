@@ -13,6 +13,7 @@ fun main(args: Array<String>) {
         "2" -> runDay02()
         "3" -> runDay03()
         "4" -> runDay04()
+        "5" -> runDay05()
 
         else -> println("""
             https://adventofcode.com/2022/
@@ -43,6 +44,10 @@ fun runDay03() {
 fun runDay04() {
     println("Part 1: " + inputLines(4).sumOf { pointsPerCard(it) })
     println("Part 2: " + playAllScratchcards(0, buildScratchcardStartState(inputLines(4))))
+}
+
+fun runDay05() {
+    println("Part 1:" + lowestLocationForSeeds(parseAlmanac(inputAsText(5))))
 }
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))
     .let { if (it.exists()) it.bufferedReader() else System.`in`.bufferedReader() }
