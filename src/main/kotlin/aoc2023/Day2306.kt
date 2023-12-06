@@ -24,16 +24,9 @@ fun quadraticRoots(duration: Long, record: Long) =
     Pair(duration.toDouble() - sqrt(duration.toDouble() * duration - 4.0 * record ) / 2.0,
         duration.toDouble() + sqrt(duration.toDouble() * duration - 4.0 * record ) / 2.0)
 
-fun boundaryValue(root: Double, duration: Long, record: Long): Long {
-    val distance = (duration - floor(root).toLong()) * floor(root).toLong()
-    return if (duration > record) floor(root).toLong() else ceil(root).toLong()
-}
-
 fun boatRaceAnswerPart2(lines: List<String>): Long {
     val (duration, record) = parseRaceDataSingle(lines)
     val (lowerRoot, upperRoot) = quadraticRoots(duration, record)
-    val lowerBoundary = boundaryValue(lowerRoot, duration, record)
-    val upperBoundary = boundaryValue(upperRoot, duration, record)
-    return upperBoundary - lowerBoundary
+    return (upperRoot - lowerRoot).toLong()
 }
 
