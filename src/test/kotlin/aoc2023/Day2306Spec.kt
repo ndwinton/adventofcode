@@ -38,7 +38,11 @@ class Day2306Spec : FunSpec ({
     test("number of winning times") {
         numberOfWinningTimes(7, 9).shouldBe(4)
     }
-    test("answer") {
+    test("part 1 answer") {
         boatRaceAnswerPart1(lines).shouldBe(288)
+    }
+
+    test("part 2 answer") {
+        boatRaceAnswerPart2(lines).shouldBe(71503L)
     }
 })

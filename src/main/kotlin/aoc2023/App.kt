@@ -54,6 +54,7 @@ fun runDay05() {
 
 fun runDay06() {
     println("Part 1: " + boatRaceAnswerPart1(inputLines(6)))
+    println("Part 2: " + boatRaceAnswerPart2(inputLines(6)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))
