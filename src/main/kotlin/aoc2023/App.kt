@@ -15,6 +15,7 @@ fun main(args: Array<String>) {
         "4" -> runDay04()
         "5" -> runDay05()
         "6" -> runDay06()
+        "7" -> runDay07()
 
         else -> println("""
             https://adventofcode.com/2022/
@@ -55,6 +56,10 @@ fun runDay05() {
 fun runDay06() {
     println("Part 1: " + boatRaceAnswerPart1(inputLines(6)))
     println("Part 2: " + boatRaceAnswerPart2(inputLines(6)))
+}
+
+fun runDay07() {
+    println("Part 1: " + camelCardsScore(inputLines(7)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))
