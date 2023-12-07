@@ -60,6 +60,7 @@ fun runDay06() {
 
 fun runDay07() {
     println("Part 1: " + camelCardsScore(inputLines(7)))
+    println("Part 2: " + camelCardsScore(inputLines(7), jokers = true))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))
