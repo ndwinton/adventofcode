@@ -11,20 +11,13 @@ data class Hand(val cards: String, val bid: Int, val jokers: Boolean = false) : 
 
     val typeValue get() =
         when (cards.groupingBy { it }.eachCount().values.sorted().playJokers()) {
-            // Five of a kind
-            listOf(5) -> 7
-            // Four of a kind
-            listOf(1, 4) -> 6
-            // Full house
-            listOf(2, 3) -> 5
-            // Three of a kind
-            listOf(1, 1, 3) -> 4
-            // Two pairs
-            listOf(1, 2, 2) -> 3
-            // One pair
-            listOf(1, 1, 1, 2) -> 2
-            // High card
-            else -> 1
+            listOf(5) -> 7          // Five of a kind
+            listOf(1, 4) -> 6       // Four of a kind
+            listOf(2, 3) -> 5       // Full house
+            listOf(1, 1, 3) -> 4    // Three of a kind
+            listOf(1, 2, 2) -> 3    // Two pairs
+            listOf(1, 1, 1, 2) -> 2 // One pair
+            else -> 1               // High card
         }
 
     private fun List<Int>.playJokers(): List<Int> {
