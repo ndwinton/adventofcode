@@ -1,6 +1,7 @@
 package aoc2023
 
 data class Hand(val cards: String, val bid: Int, val jokers: Boolean = false) : Comparable<Hand> {
+
     override fun compareTo(other: Hand): Int {
         return when {
             typeValue > other.typeValue -> 1
@@ -9,7 +10,7 @@ data class Hand(val cards: String, val bid: Int, val jokers: Boolean = false) : 
         }
     }
 
-    val typeValue get() =
+    private val typeValue get() =
         when (cards.groupingBy { it }.eachCount().values.sorted().playJokers()) {
             listOf(5) -> 7          // Five of a kind
             listOf(1, 4) -> 6       // Four of a kind
@@ -30,7 +31,8 @@ data class Hand(val cards: String, val bid: Int, val jokers: Boolean = false) : 
         mutable[mutable.size - 1] += jokerCount
         return mutable.toList()
     }
-    val comparableCardString get() =
+
+    private val comparableCardString get() =
         cards.replace('T', 'a')
             .replace('J', if (jokers) '1' else 'b')
             .replace('Q', 'c')
