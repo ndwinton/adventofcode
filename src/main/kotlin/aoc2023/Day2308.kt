@@ -18,7 +18,6 @@ tailrec fun traverseNetworkMap(node: String, depth: Int, instructions: String, m
 private fun nextNode(node: String, depth: Int, instructions: String, map: Map<String, Pair<String, String>>): String =
     if (instructions[depth % instructions.length] == 'L') map[node]!!.first else map[node]!!.second
 
-tailrec fun traverseNetworkMapMultiple(nodes: List<String>, depth: Int, instructions: String, map: Map<String, Pair<String, String>>): Long {
-    val lengths = nodes.map { traverseNetworkMap(it, 0, instructions, map, endSuffix = "Z").toLong() }
-    return lengths.reduce { current, next -> current.lcm(next) }
-}
+fun traverseNetworkMapMultiple(nodes: List<String>, depth: Int, instructions: String, map: Map<String, Pair<String, String>>): Long =
+    nodes.map { traverseNetworkMap(it, 0, instructions, map, endSuffix = "Z").toLong() }
+        .reduce { current, next -> current.lcm(next) }
