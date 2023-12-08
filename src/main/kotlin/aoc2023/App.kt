@@ -16,6 +16,7 @@ fun main(args: Array<String>) {
         "5" -> runDay05()
         "6" -> runDay06()
         "7" -> runDay07()
+        "8" -> runDay08()
 
         else -> println("""
             https://adventofcode.com/2022/
@@ -61,6 +62,12 @@ fun runDay06() {
 fun runDay07() {
     println("Part 1: " + camelCardsScore(inputLines(7)))
     println("Part 2: " + camelCardsScore(inputLines(7), jokers = true))
+}
+
+fun runDay08() {
+    val (instructions, map) = parseNetworkMap(inputLines(8))
+    println("Part 1: " + traverseNetworkMap("AAA", 0, instructions, map))
+    println("Part 2: " + traverseNetworkMapMultiple(map.keys.filter { it.endsWith('A') }, 0, instructions, map))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))

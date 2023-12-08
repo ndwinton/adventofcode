@@ -1,5 +1,7 @@
 package common
 
+import kotlin.math.absoluteValue
+
 // Based on https://gist.github.com/clementgarbay/49288c006252955c2a3c6139a61ca92a
 /**
  * Safe transpose a list of unequal-length lists.
@@ -29,3 +31,12 @@ fun <S, T> List<S>.cartesianProduct(other: List<T>) = this.flatMap { thisIt ->
         thisIt to otherIt
     }
 }
+
+// GCD - Euclid's method
+fun Long.gcd(other: Long): Long = if (other == 0L) this else other.gcd(this % other)
+
+fun Int.gcd(other: Int): Int = if (other == 0) this else other.gcd(this % other)
+
+fun Long.lcm(other: Long) = (this * other).absoluteValue / this.gcd(other)
+
+fun Int.lcm(other: Int)= (this * other).absoluteValue / this.gcd(other)
