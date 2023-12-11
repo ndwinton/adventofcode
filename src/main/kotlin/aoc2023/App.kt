@@ -19,6 +19,7 @@ fun main(args: Array<String>) {
         "8" -> runDay08()
         "9" -> runDay09()
         "10" -> runDay10()
+        "11" -> runDay11()
 
         else -> println("""
             https://adventofcode.com/2022/
@@ -80,6 +81,10 @@ fun runDay09() {
 fun runDay10() {
     println("Part 1: " + findPipeLength(inputLines(10)))
     println("Part 2: " + countEnclosed(inputLines(10)))
+}
+
+fun runDay11() {
+    println("Part 1: " + shortestDistanceSum(inputLines(11)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))
