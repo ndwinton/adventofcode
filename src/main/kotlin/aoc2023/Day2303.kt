@@ -1,12 +1,6 @@
 package aoc2023
 
-operator fun List<String>.get(row: Int, col: Int): String =
-    when {
-        row < 0 || row >= this.size -> ""
-        col < 0 || col >= this[row].length -> ""
-        else -> this[row][col].toString()
-    }
-
+import common.get
 fun findPartNumbersPerRow(lines: List<String>): List<List<Int>> =
     lines.mapIndexed { row, line ->
         Regex("""\d+""")
@@ -31,5 +25,5 @@ fun sumOfPartNumbers(lines: List<String>) =
     findPartNumbersPerRow(lines).sumOf { it.sum() }
 
 
-private fun isSpecial(s: String): Boolean =
-    s != "" && !s[0].isDigit() && s[0] != '.'
+private fun isSpecial(c: Char): Boolean =
+    !c.isDigit() && c != '.'

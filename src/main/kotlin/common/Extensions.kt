@@ -40,3 +40,10 @@ fun Int.gcd(other: Int): Int = if (other == 0) this else other.gcd(this % other)
 fun Long.lcm(other: Long) = (this * other).absoluteValue / this.gcd(other)
 
 fun Int.lcm(other: Int)= (this * other).absoluteValue / this.gcd(other)
+
+operator fun List<String>.get(row: Int, col: Int): Char =
+    when {
+        row < 0 || row >= this.size -> '.'
+        col < 0 || col >= this[row].length -> '.'
+        else -> this[row][col]
+    }

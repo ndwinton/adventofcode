@@ -18,6 +18,7 @@ fun main(args: Array<String>) {
         "7" -> runDay07()
         "8" -> runDay08()
         "9" -> runDay09()
+        "10" -> runDay10()
 
         else -> println("""
             https://adventofcode.com/2022/
@@ -75,6 +76,12 @@ fun runDay09() {
     println("Part 1: " + sumOfPredictions(inputLines(9)))
     println("Part 2: " + sumOfPredictionsBackwards(inputLines(9)))
 }
+
+fun runDay10() {
+    println("Part 1: " + findPipeLength(inputLines(10)))
+    println("Part 2: " + countEnclosed(inputLines(10)))
+}
+
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))
     .let { if (it.exists()) it.bufferedReader() else System.`in`.bufferedReader() }
 

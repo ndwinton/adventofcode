@@ -1,11 +1,9 @@
 package aoc2023
 
 import io.kotest.core.spec.style.FunSpec
-import io.kotest.matchers.ints.shouldBeGreaterThan
-import io.kotest.matchers.ints.shouldBeLessThan
 import io.kotest.matchers.shouldBe
 
-class Day2309pec : FunSpec ({
+class Day2309Spec : FunSpec ({
     val example = """
 
         """.trimIndent()
