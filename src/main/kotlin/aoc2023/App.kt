@@ -20,6 +20,7 @@ fun main(args: Array<String>) {
         "9" -> runDay09()
         "10" -> runDay10()
         "11" -> runDay11()
+        "12" -> runDay12()
 
         else -> println("""
             https://adventofcode.com/2022/
@@ -88,6 +89,9 @@ fun runDay11() {
     println("Part 1: " + shortestSumInHyperInflatedUniverse(inputLines(11)))
 }
 
+fun runDay12() {
+    println("Part 1: " + inputLines(12).sumOf { springArrangements(it) })
+}
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))
     .let { if (it.exists()) it.bufferedReader() else System.`in`.bufferedReader() }
 
