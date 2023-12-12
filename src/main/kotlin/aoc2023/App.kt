@@ -85,6 +85,7 @@ fun runDay10() {
 
 fun runDay11() {
     println("Part 1: " + shortestDistanceSum(inputLines(11)))
+    println("Part 1: " + shortestSumInHyperInflatedUniverse(inputLines(11)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))

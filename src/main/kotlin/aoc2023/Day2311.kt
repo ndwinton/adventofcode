@@ -1,7 +1,6 @@
 package aoc2023
 
 import common.transpose
-import common.get
 import kotlin.math.abs
 
 typealias Universe = List<String>
@@ -26,3 +25,19 @@ fun pairings(coords: List<Coord>): List<Pair<Coord,Coord>> =
 
 fun shortestDistanceSum(universe: Universe) =
     pairings(findGalaxies(expandUniverse(universe))).sumOf { abs(it.first.row - it.second.row) + abs(it.first.col - it.second.col) }
+
+fun blankRowIndices(universe: Universe) = universe.indices.filter { line -> universe[line].all { it == '.' } }
+
+fun shortestSumInHyperInflatedUniverse(universe: Universe, factor: Long = 1000000L): Long {
+    val blankRows = blankRowIndices(universe)
+    val blankCols = blankRowIndices(universe.map { it.toList() }.transpose().map { it.joinToString("") })
+    return pairings(findGalaxies(universe)).sumOf { pair ->
+        val rowDist = abs(pair.first.row - pair.second.row) +
+                blankRows.count { orderRange(pair.first.row, pair.second.row).contains(it) } * (factor - 1)
+        val colDist = abs(pair.first.col - pair.second.col) +
+                blankCols.count { orderRange(pair.first.col, pair.second.col).contains(it) } * (factor - 1)
+        rowDist + colDist
+    }
+}
+
+private fun orderRange(a: Int, b: Int) = if (a < b) (a .. b) else (b .. a)

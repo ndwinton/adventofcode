@@ -1,8 +1,6 @@
 package aoc2023
 
 import io.kotest.core.spec.style.FunSpec
-import io.kotest.matchers.ints.shouldBeGreaterThan
-import io.kotest.matchers.ints.shouldBeLessThan
 import io.kotest.matchers.shouldBe
 
 class Day2311Spec : FunSpec ({
@@ -65,5 +63,10 @@ class Day2311Spec : FunSpec ({
 
     test("shortest sum") {
         shortestDistanceSum(lines).shouldBe(374)
+    }
+
+    test("hyper inflation") {
+        shortestSumInHyperInflatedUniverse(lines, 10).shouldBe(1030)
+        shortestSumInHyperInflatedUniverse(lines, 100).shouldBe(8410)
     }
 })
