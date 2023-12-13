@@ -22,14 +22,14 @@ fun permuteSprings(head: String, tail: String, lengths: List<Int>, result: List<
     val nextSize = lengths.first()
     if (tail.length < nextSize + 1) return result
 
-    val chunk = tail.slice(0 .. nextSize)
+    val chunk = tail.take(nextSize + 1)
     val nextResult = if (chunk[0] == '?') permuteSprings("$head.", tail.drop(1), lengths, result) else result
 
     return when {
         chunk.first() == '.' -> permuteSprings("$head.", tail.drop(1), lengths, nextResult)
         chunk.last() == '#' -> nextResult
         chunk.take(nextSize).all { it != '.' } -> {
-            val extra = chunk.slice(0..chunk.length - 2).replace('?', '#') + "."
+            val extra = chunk.take(chunk.length - 1).replace('?', '#') + "."
             permuteSprings(head + extra, tail.drop(nextSize + 1), lengths.drop(1), nextResult)
         }
         else -> nextResult
