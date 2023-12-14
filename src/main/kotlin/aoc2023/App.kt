@@ -21,6 +21,7 @@ fun main(args: Array<String>) {
         "10" -> runDay10()
         "11" -> runDay11()
         "12" -> runDay12()
+        "13" -> runDay13()
 
         else -> println("""
             https://adventofcode.com/2022/
@@ -86,12 +87,17 @@ fun runDay10() {
 
 fun runDay11() {
     println("Part 1: " + shortestDistanceSum(inputLines(11)))
-    println("Part 1: " + shortestSumInHyperInflatedUniverse(inputLines(11)))
+    println("Part 2: " + shortestSumInHyperInflatedUniverse(inputLines(11)))
 }
 
 fun runDay12() {
     println("Part 1: " + inputLines(12).sumOf { springArrangements(it) })
 }
+
+fun runDay13() {
+    println("Part 1: " + reflectionTotals(inputAsText(13)))
+}
+
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))
     .let { if (it.exists()) it.bufferedReader() else System.`in`.bufferedReader() }
 
