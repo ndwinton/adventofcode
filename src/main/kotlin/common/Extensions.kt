@@ -24,6 +24,10 @@ fun <E> List<List<E>>.transpose(): List<List<E>> {
     }
 }
 
+@JvmName("transposeStringList")
+fun List<String>.transpose(): List<String> =
+    this.map { it.toList() }.transpose().map { it.joinToString("") }
+
 // https://stackoverflow.com/a/67595807/1773713
 
 fun <S, T> List<S>.cartesianProduct(other: List<T>) = this.flatMap { thisIt ->
