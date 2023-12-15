@@ -23,6 +23,7 @@ fun main(args: Array<String>) {
         "12" -> runDay12()
         "13" -> runDay13()
         "14" -> runDay14()
+        "15" -> runDay15()
 
         else -> println("""
             https://adventofcode.com/2022/
@@ -100,7 +101,12 @@ fun runDay13() {
 }
 
 fun runDay14() {
-    println("Part 1: " + scoreRockGrid(inputLines(14)))
+    println("Part 1: " + rollGridAndScore(inputLines(14)))
+    println("Part 2:" + rollGridAndScore(spinCycle(inputLines(14), 1000000000)))
+}
+
+fun runDay15() {
+    println("Part 1: " + initSequenceTotal(inputAsText(15)))
 }
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))
     .let { if (it.exists()) it.bufferedReader() else System.`in`.bufferedReader() }
