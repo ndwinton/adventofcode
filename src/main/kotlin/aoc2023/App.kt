@@ -107,6 +107,7 @@ fun runDay14() {
 
 fun runDay15() {
     println("Part 1: " + initSequenceTotal(inputAsText(15)))
+    println("Part 2: " + focusingPower(inputAsText(15)))
 }
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))
     .let { if (it.exists()) it.bufferedReader() else System.`in`.bufferedReader() }
