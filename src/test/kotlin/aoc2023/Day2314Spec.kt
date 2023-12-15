@@ -1,10 +1,6 @@
 package aoc2023
 
 import io.kotest.core.spec.style.FunSpec
-import io.kotest.data.forAll
-import io.kotest.data.headers
-import io.kotest.data.row
-import io.kotest.data.table
 import io.kotest.matchers.shouldBe
 
 class Day2314Spec : FunSpec ({
@@ -32,7 +28,49 @@ class Day2314Spec : FunSpec ({
     }
 
     test("score the whole grid") {
-        scoreRockGrid(lines).shouldBe(136)
+        rollGridAndScore(lines).shouldBe(136)
+    }
+
+    test("spin cycles") {
+//        spinCycle(lines, 1).shouldBe(
+//            """
+//            .....#....
+//            ....#...O#
+//            ...OO##...
+//            .OO#......
+//            .....OOO#.
+//            .O#...O#.#
+//            ....O#....
+//            ......OOOO
+//            #...O###..
+//            #..OO#....
+//        """.trimIndent().split("\n")
+//        )
+//
+//
+//        spinCycle(lines, 3).shouldBe(
+//            """
+//            .....#....
+//            ....#...O#
+//            .....##...
+//            ..O#......
+//            .....OOO#.
+//            .O#...O#.#
+//            ....O#...O
+//            .......OOO
+//            #...O###.O
+//            #.OOO#...O
+//        """.trimIndent().split("\n")
+//        )
+//
+//        (1 .. 20).forEach {
+//            val g = spinCycle(lines, it)
+//            val s = scoreGrid(g)
+//            println("--- $it -> $s")
+//            g.forEach { println(it) }
+//        }
+        //scoreGrid(spinCycle(lines, 100)).shouldBe(68)
+        scoreGrid(spinCycle(lines)).shouldBe(64)
     }
 })
 

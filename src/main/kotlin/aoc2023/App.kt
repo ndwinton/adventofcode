@@ -102,7 +102,7 @@ fun runDay13() {
 
 fun runDay14() {
     println("Part 1: " + rollGridAndScore(inputLines(14)))
-    println("Part 2:" + rollGridAndScore(spinCycle(inputLines(14), 1000000000)))
+    println("Part 2:" + scoreGrid(spinCycle(inputLines(14), 1000000000)))
 }
 
 fun runDay15() {
