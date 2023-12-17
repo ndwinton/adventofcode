@@ -23,8 +23,12 @@ class Day2316Spec : FunSpec ({
 
     val lines = example.split("\n")
 
-    test("examples") {
-        day16Part1(lines).shouldBe(46)
+    test("grid energy") {
+        runBeamSimulation(lines).shouldBe(46)
+    }
+
+    test("max energy") {
+        maximumEnergized(lines).shouldBe(51)
     }
 })
 

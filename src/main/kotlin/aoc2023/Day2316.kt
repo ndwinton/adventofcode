@@ -1,5 +1,7 @@
 package aoc2023
 
+import java.lang.Integer.max
+
 data class IOState(var input: Boolean = false, var output: Boolean = false)
 
 data class Trigger(val left: Boolean, val right: Boolean, val up: Boolean, val down: Boolean)
@@ -185,4 +187,38 @@ fun runBeamSimulation(lines: List<String>): Int {
     return countEnergized(iterateBeams(cells))
 }
 
+fun maximumEnergized(lines: List<String>): Int {
+    val maxLeft = maxFromLeft(lines)
+    val maxRight = maxFromRight(lines)
+    val maxTop = maxFromTop(lines)
+    val maxBottom = maxFromBottom(lines)
+    return max(max(max(maxLeft, maxRight), maxTop), maxBottom)
+}
 
+fun maxFromLeft(lines: List<String>): Int =
+    lines.indices.maxOf { index ->
+        val cells = buildBeamCells(lines)
+        cells[index][0].activateLeft()
+        countEnergized(iterateBeams(cells))
+    }
+
+fun maxFromRight(lines: List<String>): Int =
+    lines.indices.maxOf { index ->
+        val cells = buildBeamCells(lines)
+        cells[index][lines[index].length - 1].activateRight()
+        countEnergized(iterateBeams(cells))
+    }
+
+fun maxFromTop(lines: List<String>): Int =
+    lines[0].indices.maxOf { index ->
+        val cells = buildBeamCells(lines)
+        cells[0][index].activateUp()
+        countEnergized(iterateBeams(cells))
+    }
+
+fun maxFromBottom(lines: List<String>): Int =
+    lines[0].indices.maxOf { index ->
+        val cells = buildBeamCells(lines)
+        cells[lines.size - 1][index].activateDown()
+        countEnergized(iterateBeams(cells))
+    }

@@ -113,6 +113,7 @@ fun runDay15() {
 
 fun runDay16() {
     println("Part 1: " + runBeamSimulation(inputLines(16)))
+    println("Part 2: " + maximumEnergized(inputLines(16)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))
