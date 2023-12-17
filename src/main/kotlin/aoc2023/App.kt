@@ -24,6 +24,7 @@ fun main(args: Array<String>) {
         "13" -> runDay13()
         "14" -> runDay14()
         "15" -> runDay15()
+        "16" -> runDay16()
 
         else -> println("""
             https://adventofcode.com/2022/
@@ -109,6 +110,11 @@ fun runDay15() {
     println("Part 1: " + initSequenceTotal(inputAsText(15)))
     println("Part 2: " + focusingPower(inputAsText(15)))
 }
+
+fun runDay16() {
+    println("Part 1: " + runBeamSimulation(inputLines(16)))
+}
+
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2023/%02d.txt", dayNum))
     .let { if (it.exists()) it.bufferedReader() else System.`in`.bufferedReader() }
 
