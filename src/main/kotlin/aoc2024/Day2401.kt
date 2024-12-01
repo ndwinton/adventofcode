@@ -10,6 +10,6 @@ fun totalListDistance(lines: List<String>): Int {
 
 fun similarityScore(lines: List<String>): Long {
     val values = lines.map { it.split(Regex("""\s+"""))[0].toLong() }
-    val counts = lines.map { it.split(Regex("""\s+"""))[1].toLong() }.groupBy { it }
-    return values.sumOf { it * counts.getOrDefault(it, listOf()).size }
+    val counts = lines.map { it.split(Regex("""\s+"""))[1].toLong() }.groupingBy { it }.eachCount()
+    return values.sumOf { it * counts.getOrDefault(it, 0) }
 }
