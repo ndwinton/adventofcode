@@ -9,8 +9,8 @@ import java.io.Reader
 fun main(args: Array<String>) {
     when (args[0]) {
         "1" -> runDay01()
-        /*
         "2" -> runDay02()
+        /*
         "3" -> runDay03()
         "4" -> runDay04()
         "5" -> runDay05()
@@ -42,15 +42,20 @@ fun runDay01() {
     println("Part 2: " + similarityScore(inputLines(1)))
 }
 
+fun runDay02() {
+    println("Part 1: " + inputLines(2).count { isLevelSafe(inputLineAsIntList(it)) })
+    println("Part 1: " + inputLines(2).count { isDampenedLevelSafe(inputLineAsIntList(it)) })
+}
+
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2024/%02d.txt", dayNum))
     .let { if (it.exists()) it.bufferedReader() else System.`in`.bufferedReader() }
 
 fun inputLines(dayNum: Int): List<String> = inputForDay(dayNum).readLines()
 
 //fun inputAsIntList(dayNum: Int) = inputLines(dayNum).map { it.toInt() }
-//
-//fun inputLineAsIntList(line: String) = line.split(",").map { it.toInt() }
-//
+
+fun inputLineAsIntList(line: String) = line.split(" ").map { it.toInt() }
+
 //fun inputAsLongList(dayNum: Int) = inputLines(dayNum).map { it.toLong() }
 
 fun inputAsText(dayNum: Int) : String = inputForDay(dayNum).readText()
