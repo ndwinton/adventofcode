@@ -44,7 +44,7 @@ fun runDay01() {
 
 fun runDay02() {
     println("Part 1: " + inputLines(2).count { isLevelSafe(inputLineAsIntList(it)) })
-    println("Part 1: " + inputLines(2).count { isDampenedLevelSafe(inputLineAsIntList(it)) })
+    println("Part 2: " + inputLines(2).count { isDampenedLevelSafe(inputLineAsIntList(it)) })
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2024/%02d.txt", dayNum))
