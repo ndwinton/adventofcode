@@ -10,8 +10,8 @@ fun main(args: Array<String>) {
     when (args[0]) {
         "1" -> runDay01()
         "2" -> runDay02()
-        /*
         "3" -> runDay03()
+        /*
         "4" -> runDay04()
         "5" -> runDay05()
         "6" -> runDay06()
@@ -45,6 +45,11 @@ fun runDay01() {
 fun runDay02() {
     println("Part 1: " + inputLines(2).count { isLevelSafe(inputLineAsIntList(it)) })
     println("Part 2: " + inputLines(2).count { isDampenedLevelSafe(inputLineAsIntList(it)) })
+}
+
+fun runDay03() {
+    println("Part 1: " + cleanAndExecute(inputAsText(3)))
+    println("Part 2: " + cleanAndExecuteWithConditions(inputAsText(3)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2024/%02d.txt", dayNum))
