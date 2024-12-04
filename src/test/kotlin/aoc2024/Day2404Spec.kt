@@ -18,8 +18,11 @@ class Day2404Spec : FunSpec ({
     """.trimIndent()
 
 
-    test("example 1") {
+    test("count xmases") {
         countXmases(example.split("\n")).shouldBe(18)
     }
 
+    test("count X-mases") {
+        countCrossMases(example.split("\n")).shouldBe(9)
+    }
 })

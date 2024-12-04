@@ -54,6 +54,7 @@ fun runDay03() {
 
 fun runDay04() {
     println("Part 1: " + countXmases(inputLines(4)))
+    println("Part 2: " + countCrossMases(inputLines(4)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2024/%02d.txt", dayNum))
