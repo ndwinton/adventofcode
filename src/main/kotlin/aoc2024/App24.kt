@@ -12,20 +12,18 @@ fun main(args: Array<String>) {
         "2" -> runDay02()
         "3" -> runDay03()
         "4" -> runDay04()
-        /*
         "5" -> runDay05()
-        "6" -> runDay06()
-        "7" -> runDay07()
-        "8" -> runDay08()
-        "9" -> runDay09()
-        "10" -> runDay10()
-        "11" -> runDay11()
-        "12" -> runDay12()
-        "13" -> runDay13()
-        "14" -> runDay14()
-        "15" -> runDay15()
-        "16" -> runDay16()
-        */
+//        "6" -> runDay06()
+//        "7" -> runDay07()
+//        "8" -> runDay08()
+//        "9" -> runDay09()
+//        "10" -> runDay10()
+//        "11" -> runDay11()
+//        "12" -> runDay12()
+//        "13" -> runDay13()
+//        "14" -> runDay14()
+//        "15" -> runDay15()
+//        "16" -> runDay16()
         else -> println("""
             https://adventofcode.com/2024/
             
@@ -55,6 +53,10 @@ fun runDay03() {
 fun runDay04() {
     println("Part 1: " + countXmases(inputLines(4)))
     println("Part 2: " + countCrossMases(inputLines(4)))
+}
+
+fun runDay05() {
+    println("Part 1: " + sumMidpointsOfOrderedUpdates(inputLines(5)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2024/%02d.txt", dayNum))
