@@ -57,6 +57,7 @@ fun runDay04() {
 
 fun runDay05() {
     println("Part 1: " + sumMidpointsOfOrderedUpdates(inputLines(5)))
+    println("Part 2: " + sumMidpointsOfUnorderedUpdates(inputLines(5)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2024/%02d.txt", dayNum))

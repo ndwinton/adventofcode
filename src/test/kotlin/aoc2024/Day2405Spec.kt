@@ -41,4 +41,8 @@ class Day2405Spec : FunSpec ({
     test("sum midpoints of ordered updates") {
         sumMidpointsOfOrderedUpdates(example.split("\n")).shouldBe(143)
     }
+
+    test("sum midpoints of unordered updates") {
+        sumMidpointsOfUnorderedUpdates(example.split("\n")).shouldBe(123)
+    }
 })
