@@ -13,7 +13,7 @@ fun main(args: Array<String>) {
         "3" -> runDay03()
         "4" -> runDay04()
         "5" -> runDay05()
-//        "6" -> runDay06()
+        "6" -> runDay06()
 //        "7" -> runDay07()
 //        "8" -> runDay08()
 //        "9" -> runDay09()
@@ -58,6 +58,10 @@ fun runDay04() {
 fun runDay05() {
     println("Part 1: " + sumMidpointsOfOrderedUpdates(inputLines(5)))
     println("Part 2: " + sumMidpointsOfUnorderedUpdates(inputLines(5)))
+}
+
+fun runDay06() {
+    println("part 1: " + distinctVisited(inputLines(6)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2024/%02d.txt", dayNum))
