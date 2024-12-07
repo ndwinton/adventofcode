@@ -61,7 +61,9 @@ fun runDay05() {
 }
 
 fun runDay06() {
-    println("part 1: " + distinctVisited(inputLines(6)))
+    println("Part 1: " + distinctVisited(inputLines(6)))
+    println("Part 2 will take a while ...")
+    println("Part 2: " + loopForcingPositions(inputLines(6)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2024/%02d.txt", dayNum))

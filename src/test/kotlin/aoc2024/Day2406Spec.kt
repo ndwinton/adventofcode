@@ -19,4 +19,8 @@ class Day2406Spec : FunSpec ({
     test("distinct visited") {
         distinctVisited(example.split("\n")).shouldBe(41)
     }
+
+    test("loop forcing positions") {
+        loopForcingPositions(example.split("\n")).shouldBe(6)
+    }
 })
