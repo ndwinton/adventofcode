@@ -15,7 +15,11 @@ class Day2407Spec : FunSpec ({
         21037: 9 7 18 13
         292: 11 6 16 20""".trimIndent()
 
-    test("solvable calibrations ") {
+    test("solvable calibrations") {
         solvableCalibrationsTotal(example.split("\n")).shouldBe(3749)
+    }
+
+    test("solvable calibrations with concat") {
+        solvableCalibrationsTotal(example.split("\n"), true).shouldBe(11387)
     }
 })

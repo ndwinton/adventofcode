@@ -68,6 +68,7 @@ fun runDay06() {
 
 fun runDay07() {
     println("Part 1: " + solvableCalibrationsTotal(inputLines(7)))
+    println("Part 2: " + solvableCalibrationsTotal(inputLines(7), true))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2024/%02d.txt", dayNum))
