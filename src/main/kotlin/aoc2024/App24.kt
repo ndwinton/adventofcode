@@ -72,6 +72,7 @@ fun runDay07() {
 }
 fun runDay08() {
     println("Part 1: " + uniqueAntinodes(inputLines(8)))
+    println("Part 2: " + uniqueAntinodesExtended(inputLines(8)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2024/%02d.txt", dayNum))

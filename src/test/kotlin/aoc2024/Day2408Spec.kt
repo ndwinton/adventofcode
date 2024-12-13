@@ -21,4 +21,8 @@ class Day2408Spec : FunSpec ({
     test("count antinodes") {
         uniqueAntinodes(example.split("\n")).shouldBe(14)
     }
+
+    test("count extended antinodes") {
+        uniqueAntinodesExtended(example.split("\n")).shouldBe(34)
+    }
 })
