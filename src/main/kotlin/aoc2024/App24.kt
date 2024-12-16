@@ -16,7 +16,7 @@ fun main(args: Array<String>) {
         "6" -> runDay06()
         "7" -> runDay07()
         "8" -> runDay08()
-//        "9" -> runDay09()
+        "9" -> runDay09()
 //        "10" -> runDay10()
 //        "11" -> runDay11()
 //        "12" -> runDay12()
@@ -73,6 +73,10 @@ fun runDay07() {
 fun runDay08() {
     println("Part 1: " + uniqueAntinodes(inputLines(8)))
     println("Part 2: " + uniqueAntinodesExtended(inputLines(8)))
+}
+
+fun runDay09() {
+    println("Part 1: " + defragChecksum(inputAsText(9)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2024/%02d.txt", dayNum))
