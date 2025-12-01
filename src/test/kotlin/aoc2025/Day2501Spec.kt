@@ -17,7 +17,12 @@ class Day2501Spec : FunSpec ({
         L82
         """.trimIndent()
 
-    test("number of zeroes") {
-        numberOfZeroes(example.split("\n")).shouldBe(3)
+    test("number of stops on zero") {
+        numberOfStopsOnZero(example.split("\n")).shouldBe(3)
+    }
+
+    test("number of passes through zero") {
+        numberOfPassesThroughZero(example.split("\n")).shouldBe(6)
+
     }
 })

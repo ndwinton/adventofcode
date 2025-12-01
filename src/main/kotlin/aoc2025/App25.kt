@@ -36,7 +36,8 @@ fun main(args: Array<String>) {
 }
 
 fun runDay01() {
-    println("Part 1: " + numberOfZeroes(inputLines(1)))
+    println("Part 1: " + numberOfStopsOnZero(inputLines(1)))
+    println("Part 2: " + numberOfPassesThroughZero(inputLines(1)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2025/%02d.txt", dayNum))
