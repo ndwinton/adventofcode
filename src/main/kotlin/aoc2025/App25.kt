@@ -42,6 +42,7 @@ fun runDay01() {
 
 fun runDay02() {
     println("Part 1: " + sumOfInvalidIdsInRangeData(inputAsText(2)))
+    println("Part 1: " + sumOfInvalidIdsInRangeData(inputAsText(2), ID2_PATTERN))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2025/%02d.txt", dayNum))
