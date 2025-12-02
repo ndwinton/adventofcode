@@ -9,7 +9,7 @@ import java.io.Reader
 fun main(args: Array<String>) {
     when (args[0]) {
         "1" -> runDay01()
-//        "2" -> runDay02()
+        "2" -> runDay02()
 //        "3" -> runDay03()
 //        "4" -> runDay04()
 //        "5" -> runDay05()
@@ -38,6 +38,10 @@ fun main(args: Array<String>) {
 fun runDay01() {
     println("Part 1: " + numberOfStopsOnZero(inputLines(1)))
     println("Part 2: " + numberOfPassesThroughZero(inputLines(1)))
+}
+
+fun runDay02() {
+    println("Part 1: " + sumOfInvalidIdsInRangeData(inputAsText(2)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2025/%02d.txt", dayNum))
