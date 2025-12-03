@@ -47,6 +47,7 @@ fun runDay02() {
 
 fun runDay03() {
     println("Part 1: " + totalJoltageOfBanks(inputLines(3)))
+    println("Part 2: " + totalJoltageOfBanks(inputLines(3), 12))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2025/%02d.txt", dayNum))
