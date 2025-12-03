@@ -1,7 +1,7 @@
 # Advent of Code
 
 These are my solutions to the [Advent of Code](https://adventofcode.com)
-challenges for 2021 and 2022.
+challenges for 2021 onwards – or at least those I've got round to solving.
 
 They are all in [Kotlin](https://kotlinlang.org) and use a mixture of
 approaches. Generally, I prefer to use immutable data structures and a
