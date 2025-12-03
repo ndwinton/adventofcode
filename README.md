@@ -2,6 +2,8 @@
 
 These are my solutions to the [Advent of Code](https://adventofcode.com)
 challenges for 2021 onwards – or at least those I've got round to solving.
+(For completeness, my 2020 solutions are
+[in a different repository](https://github.com/ndwinton/aoc2020)).
 
 They are all in [Kotlin](https://kotlinlang.org) and use a mixture of
 approaches. Generally, I prefer to use immutable data structures and a
