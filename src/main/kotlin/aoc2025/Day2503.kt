@@ -6,3 +6,5 @@ fun joltageOfBank(bank: String) =
         .let { first ->
             (first + "" + bank.substring(bank.indexOf(first) + 1).max()).toInt()
         }
+
+fun totalJoltageOfBanks(banks: List<String>) = banks.sumOf { joltageOfBank(it) }
