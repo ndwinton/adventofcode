@@ -11,7 +11,7 @@ fun main(args: Array<String>) {
         "1" -> runDay01()
         "2" -> runDay02()
         "3" -> runDay03()
-//        "4" -> runDay04()
+        "4" -> runDay04()
 //        "5" -> runDay05()
 //        "6" -> runDay06()
 //        "7" -> runDay07()
@@ -48,6 +48,10 @@ fun runDay02() {
 fun runDay03() {
     println("Part 1: " + totalJoltageOfBanks(inputLines(3)))
     println("Part 2: " + totalJoltageOfBanks(inputLines(3), 12))
+}
+
+fun runDay04() {
+    println("Part 1: " + countAccessibleRolls(inputLines(4)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2025/%02d.txt", dayNum))
