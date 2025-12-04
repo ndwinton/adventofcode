@@ -21,4 +21,8 @@ class Day2504Spec : FunSpec ({
     test("count accessible rolls") {
         countAccessibleRolls(example).shouldBe(13)
     }
+
+    test("count removed rolls"){
+        countRemovedRolls(example).shouldBe(43)
+    }
 })

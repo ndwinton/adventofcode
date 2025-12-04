@@ -52,6 +52,7 @@ fun runDay03() {
 
 fun runDay04() {
     println("Part 1: " + countAccessibleRolls(inputLines(4)))
+    println("Part 2: " + countRemovedRolls(inputLines(4)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2025/%02d.txt", dayNum))
@@ -61,7 +62,7 @@ fun inputLines(dayNum: Int): List<String> = inputForDay(dayNum).readLines()
 
 //fun inputAsIntList(dayNum: Int) = inputLines(dayNum).map { it.toInt() }
 
-fun inputLineAsIntList(line: String) = line.split(" ").map { it.toInt() }
+//fun inputLineAsIntList(line: String) = line.split(" ").map { it.toInt() }
 
 //fun inputAsLongList(dayNum: Int) = inputLines(dayNum).map { it.toLong() }
 
