@@ -19,7 +19,7 @@ class Day2505Spec : FunSpec ({
             32
         """.trimIndent().split("\n")
 
-    test("count accessible rolls") {
+    test("count fresh ingredients") {
         countFreshIngredients(example).shouldBe(3)
     }
 
