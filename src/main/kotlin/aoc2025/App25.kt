@@ -57,6 +57,7 @@ fun runDay04() {
 
 fun runDay05() {
     println("Part 1: " + countFreshIngredients(inputLines(5)))
+    println("Part 2: " + totalPossibleFreshIngredients(inputLines(5)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2025/%02d.txt", dayNum))

@@ -23,4 +23,7 @@ class Day2505Spec : FunSpec ({
         countFreshIngredients(example).shouldBe(3)
     }
 
+    test("total possible fresh ingredients") {
+        totalPossibleFreshIngredients(example).shouldBe(14)
+    }
 })
