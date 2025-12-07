@@ -62,6 +62,7 @@ fun runDay05() {
 
 fun runDay06() {
     println("Part 1: " + solveWorksheet(inputLines(6)))
+    println("Part 2: " + solveWorksheetTopToBottom(inputLines(6)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2025/%02d.txt", dayNum))

@@ -15,4 +15,8 @@ class Day2506Spec : FunSpec ({
     test("solve worksheet") {
         solveWorksheet(example).shouldBe(4277556L)
     }
+
+    test("solve worksheet top to bottom") {
+        solveWorksheetTopToBottom(example).shouldBe(3263827L)
+    }
 })
