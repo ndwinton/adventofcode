@@ -13,7 +13,7 @@ fun main(args: Array<String>) {
         "3" -> runDay03()
         "4" -> runDay04()
         "5" -> runDay05()
-//        "6" -> runDay06()
+        "6" -> runDay06()
 //        "7" -> runDay07()
 //        "8" -> runDay08()
 //        "9" -> runDay09()
@@ -58,6 +58,10 @@ fun runDay04() {
 fun runDay05() {
     println("Part 1: " + countFreshIngredients(inputLines(5)))
     println("Part 2: " + totalPossibleFreshIngredients(inputLines(5)))
+}
+
+fun runDay06() {
+    println("Part 1: " + solveWorksheet(inputLines(6)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2025/%02d.txt", dayNum))
