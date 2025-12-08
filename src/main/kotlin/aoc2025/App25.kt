@@ -14,7 +14,7 @@ fun main(args: Array<String>) {
         "4" -> runDay04()
         "5" -> runDay05()
         "6" -> runDay06()
-//        "7" -> runDay07()
+        "7" -> runDay07()
 //        "8" -> runDay08()
 //        "9" -> runDay09()
 //        "10" -> runDay10()
@@ -63,6 +63,10 @@ fun runDay05() {
 fun runDay06() {
     println("Part 1: " + solveWorksheet(inputLines(6)))
     println("Part 2: " + solveWorksheetTopToBottom(inputLines(6)))
+}
+
+fun runDay07() {
+    println("Part 1: " + tachyonSplitterCount(inputLines(7)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2025/%02d.txt", dayNum))
