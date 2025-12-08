@@ -28,4 +28,8 @@ class Day2507Spec : FunSpec ({
         tachyonSplitterCount(example).shouldBe(21)
     }
 
+    test("tachyon path count") {
+        tachyonPathCount(example).shouldBe(40)
+    }
+
 })

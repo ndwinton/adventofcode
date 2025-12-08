@@ -67,6 +67,7 @@ fun runDay06() {
 
 fun runDay07() {
     println("Part 1: " + tachyonSplitterCount(inputLines(7)))
+    println("Part 1: " + tachyonPathCount(inputLines(7)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2025/%02d.txt", dayNum))

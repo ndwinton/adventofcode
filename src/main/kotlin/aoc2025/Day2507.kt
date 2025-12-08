@@ -18,3 +18,18 @@ fun tachyonSplitterCount(input: List<String>): Int {
     }
     return splitters
 }
+
+fun tachyonPathCount(input: List<String>): Long {
+    val lines = input.drop(1)
+    val cache: MutableMap<Pair<Int, Int>, Long> = mutableMapOf()
+
+    fun pathsAtIndex(lineIndex: Int, tachyonIndex: Int): Long = cache.getOrPut(Pair(lineIndex, tachyonIndex)) {
+        when {
+            lineIndex >= lines.size -> 1L
+            lines[lineIndex][tachyonIndex] == '^' -> pathsAtIndex(lineIndex + 1, tachyonIndex - 1) + pathsAtIndex(lineIndex + 1, tachyonIndex + 1)
+            else -> pathsAtIndex(lineIndex + 1, tachyonIndex)
+        }
+    }
+
+    return pathsAtIndex(0, input.first().indexOf('S'))
+}
