@@ -15,7 +15,7 @@ fun main(args: Array<String>) {
         "5" -> runDay05()
         "6" -> runDay06()
         "7" -> runDay07()
-//        "8" -> runDay08()
+        "8" -> runDay08()
 //        "9" -> runDay09()
 //        "10" -> runDay10()
 //        "11" -> runDay11()
@@ -67,7 +67,11 @@ fun runDay06() {
 
 fun runDay07() {
     println("Part 1: " + tachyonSplitterCount(inputLines(7)))
-    println("Part 1: " + tachyonPathCount(inputLines(7)))
+    println("Part 2: " + tachyonPathCount(inputLines(7)))
+}
+
+fun runDay08() {
+    println("Part 1:" + circuitCalculation(inputLines(8), 1000))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2025/%02d.txt", dayNum))
