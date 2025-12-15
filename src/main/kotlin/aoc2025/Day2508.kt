@@ -11,6 +11,29 @@ data class Circuit(val coords: Set<Coord3D>) {
     fun contains(coord: Coord3D) = coords.contains(coord)
 }
 
+private fun addPairToCircuits(pair: Pair<Coord3D,Coord3D>, circuits: Set<Circuit>): Set<Circuit> {
+    val foundFirst = circuits.find { it.contains(pair.first) }
+    val foundSecond = circuits.find { it.contains(pair.second) }
+
+    return when {
+        foundFirst == null && foundSecond == null -> { // Completely new circuit
+           circuits + setOf(Circuit(setOf(pair.first, pair.second)))
+        }
+        foundFirst == foundSecond -> { // Both already in same circuit
+            circuits
+        }
+        foundFirst != null && foundSecond == null -> { // Add to circuit already containing first part of pair
+            (circuits - setOf(foundFirst)) + setOf(Circuit(foundFirst.coords + setOf(pair.first, pair.second)))
+        }
+        foundFirst == null && foundSecond != null -> { // Add to circuit already containing second part of pair
+            (circuits - setOf(foundSecond)) + setOf(Circuit(foundSecond.coords + setOf(pair.first, pair.second)))
+        }
+        else -> { // Join two existing circuits
+            (circuits - setOf(foundFirst!!, foundSecond!!) + setOf(Circuit(foundFirst.coords + foundSecond.coords)))
+        }
+    }
+}
+
 fun circuitCalculation(input: List<String>, consider: Int): Long {
     val coords = input.map { it.split(",").map { it.toLong() }.let { list -> Coord3D(list[0], list[1], list[2]) } }
     val pairs = coords
@@ -19,33 +42,9 @@ fun circuitCalculation(input: List<String>, consider: Int): Long {
         .sortedBy { it.first.squareDistance(it.second) }
         .toList()
 
-    fun buildCircuits(pairs: List<Pair<Coord3D,Coord3D>>, count: Int, circuits: Set<Circuit>): Set<Circuit> {
-
-        if (count == 0) return circuits
-
-        val next = pairs.first()
-        val foundFirst = circuits.find { it.contains(next.first) }
-        val foundSecond = circuits.find { it.contains(next.second) }
-        return when {
-            foundFirst == null && foundSecond == null -> { // Completely new circuit
-                buildCircuits(pairs.drop(1), count - 1, circuits + setOf(Circuit(setOf(next.first, next.second))))
-            }
-            foundFirst == foundSecond -> { // Both already in same circuit
-                buildCircuits(pairs.drop(1), count - 1, circuits)
-            }
-            foundFirst != null && foundSecond == null -> { // Add to circuit already containing first part of pair
-                val newCircuits = (circuits - setOf(foundFirst)) + setOf(Circuit(foundFirst.coords + setOf(next.first, next.second)))
-                buildCircuits(pairs.drop(1), count - 1, newCircuits)
-            }
-            foundFirst == null && foundSecond != null -> { // Add to circuit already containing second part of pair
-                val newCircuits = (circuits - setOf(foundSecond)) + setOf(Circuit(foundSecond.coords + setOf(next.first, next.second)))
-                buildCircuits(pairs.drop(1), count - 1, newCircuits)
-            }
-            else -> { // Join two existing circuits
-                buildCircuits(pairs.drop(1), count - 1, (circuits - setOf(foundFirst!!, foundSecond!!) + setOf(Circuit(foundFirst.coords + foundSecond.coords))))
-            }
-        }
-    }
+    fun buildCircuits(pairs: List<Pair<Coord3D,Coord3D>>, count: Int, circuits: Set<Circuit>): Set<Circuit> =
+        if (count == 0 || pairs.isEmpty()) circuits
+        else buildCircuits(pairs.drop(1), count - 1, addPairToCircuits(pairs.first(), circuits))
 
     return buildCircuits(pairs, consider, emptySet())
         .sortedByDescending { it.coords.size }
