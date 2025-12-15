@@ -29,7 +29,10 @@ class Day2508Spec : FunSpec ({
         """.trimIndent().split("\n")
 
     test("largest 3 circuit result") {
-        circuitCalculation(example, 10).shouldBe(40L)
+        top3CircuitsResult(example, 10).shouldBe(40L)
     }
 
+    test("last required connection result") {
+        lastRequiredConnectionResult(example).shouldBe(25272L)
+    }
 })

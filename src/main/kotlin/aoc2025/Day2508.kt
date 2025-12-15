@@ -34,15 +34,10 @@ private fun addPairToCircuits(pair: Pair<Coord3D,Coord3D>, circuits: Set<Circuit
     }
 }
 
-fun circuitCalculation(input: List<String>, consider: Int): Long {
-    val coords = input.map { it.split(",").map { it.toLong() }.let { list -> Coord3D(list[0], list[1], list[2]) } }
-    val pairs = coords
-        .combinations(2)
-        .map { Pair(it[0], it[1]) }
-        .sortedBy { it.first.squareDistance(it.second) }
-        .toList()
+fun top3CircuitsResult(input: List<String>, consider: Int): Long {
+    val pairs = generateCoordPairs(parseCoords(input))
 
-    fun buildCircuits(pairs: List<Pair<Coord3D,Coord3D>>, count: Int, circuits: Set<Circuit>): Set<Circuit> =
+    tailrec fun buildCircuits(pairs: List<Pair<Coord3D,Coord3D>>, count: Int, circuits: Set<Circuit>): Set<Circuit> =
         if (count == 0 || pairs.isEmpty()) circuits
         else buildCircuits(pairs.drop(1), count - 1, addPairToCircuits(pairs.first(), circuits))
 
@@ -50,4 +45,28 @@ fun circuitCalculation(input: List<String>, consider: Int): Long {
         .sortedByDescending { it.coords.size }
         .take(3)
         .fold(1L) { acc, circuit -> acc * circuit.coords.size }
+}
+
+private fun parseCoords(input: List<String>): List<Coord3D> =
+    input.map { it.split(",").map { it.toLong() }.let { list -> Coord3D(list[0], list[1], list[2]) } }
+
+private fun generateCoordPairs(coords: List<Coord3D>): List<Pair<Coord3D, Coord3D>> =
+    coords.combinations(2)
+        .map { Pair(it[0], it[1]) }
+        .sortedBy { it.first.squareDistance(it.second) }
+        .toList()
+
+fun lastRequiredConnectionResult(input: List<String>): Long {
+    val coords = parseCoords(input)
+    val pairs = generateCoordPairs(coords)
+
+    tailrec fun findLastRequired(remaining: List<Pair<Coord3D,Coord3D>>, circuits: Set<Circuit>): Pair<Coord3D,Coord3D> {
+        val next = remaining.first()
+        val newCircuits = addPairToCircuits(next, circuits)
+
+        return if (newCircuits.size == 1 && newCircuits.first().coords.containsAll(coords)) next
+            else findLastRequired(remaining.drop(1), newCircuits)
+    }
+
+    return findLastRequired(pairs, emptySet()).let { it.first.x * it.second.x }
 }

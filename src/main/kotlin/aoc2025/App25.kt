@@ -71,7 +71,8 @@ fun runDay07() {
 }
 
 fun runDay08() {
-    println("Part 1:" + circuitCalculation(inputLines(8), 1000))
+    println("Part 1: " + top3CircuitsResult(inputLines(8), 1000))
+    println("Part 2: " + lastRequiredConnectionResult(inputLines(8)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2025/%02d.txt", dayNum))
