@@ -19,4 +19,8 @@ class Day2509Spec : FunSpec ({
     test("largest red rectangle") {
         largestRedRectangle(example).shouldBe(50)
     }
+
+    test("largest enclosed rectangle") {
+        largestEnclosedRectangle(example).shouldBe(24)
+    }
 })

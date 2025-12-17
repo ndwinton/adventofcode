@@ -77,6 +77,7 @@ fun runDay08() {
 
 fun runDay09() {
     println("Part 1: " + largestRedRectangle(inputLines(9)))
+    println("Part 2: " + largestEnclosedRectangle(inputLines(9)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2025/%02d.txt", dayNum))
