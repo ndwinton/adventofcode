@@ -12,8 +12,8 @@ class Day2510Spec : FunSpec ({
         """.trimIndent().split("\n")
 
     test("parse indicator value") {
-        parseIndicatorInstructions(example[0]).shouldBe(IndicatorInstructions(0b0110, listOf(0b1000, 0b1010, 0b0100, 0b1100, 0b0101, 0b0011), listOf(3, 5, 4, 7)))
-        parseIndicatorInstructions(example[1]).shouldBe(IndicatorInstructions(0b01000, listOf(0b11101, 0b01100, 0b10001, 0b00111, 0b11110), listOf(7, 5, 12, 7, 2)))
+        parseIndicatorInstructions(example[0]).shouldBe(IndicatorInstructions(0b0110, listOf(0b1000, 0b1010, 0b0100, 0b1100, 0b0101, 0b0011), JoltageArray(shortArrayOf(3, 5, 4, 7))))
+        parseIndicatorInstructions(example[1]).shouldBe(IndicatorInstructions(0b01000, listOf(0b11101, 0b01100, 0b10001, 0b00111, 0b11110), JoltageArray(shortArrayOf(7, 5, 12, 7, 2))))
     }
 
     test("finding fewest presses") {
@@ -22,7 +22,13 @@ class Day2510Spec : FunSpec ({
         findFewestPresses(parseIndicatorInstructions(example[2])).shouldBe(2)
     }
 
-    test("total for input") {
+    test("total presses for input") {
         findTotalFewestPressesForInput(example).shouldBe(7)
+    }
+
+    test("finding fewest presses for joltages") {
+        findFewestPressesForJoltages(parseIndicatorInstructions(example[0])).shouldBe(10)
+        findFewestPressesForJoltages(parseIndicatorInstructions(example[1])).shouldBe(12)
+        findFewestPressesForJoltages(parseIndicatorInstructions(example[2])).shouldBe(11)
     }
 })

@@ -82,6 +82,7 @@ fun runDay09() {
 
 fun runDay10() {
     println("Part 1: " + findTotalFewestPressesForInput(inputLines(10)))
+    println("Part 2: " + findTotalFewestJoltagePressesForInput(inputLines(10)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2025/%02d.txt", dayNum))
