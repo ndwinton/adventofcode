@@ -17,7 +17,7 @@ fun main(args: Array<String>) {
         "7" -> runDay07()
         "8" -> runDay08()
         "9" -> runDay09()
-//        "10" -> runDay10()
+        "10" -> runDay10()
 //        "11" -> runDay11()
 //        "12" -> runDay12()
 //        "13" -> runDay13()
@@ -78,6 +78,10 @@ fun runDay08() {
 fun runDay09() {
     println("Part 1: " + largestRedRectangle(inputLines(9)))
     println("Part 2: " + largestEnclosedRectangle(inputLines(9)))
+}
+
+fun runDay10() {
+    println("Part 1: " + findTotalFewestPressesForInput(inputLines(10)))
 }
 
 fun inputForDay(dayNum: Int): Reader = File(String.format("inputs/2025/%02d.txt", dayNum))
